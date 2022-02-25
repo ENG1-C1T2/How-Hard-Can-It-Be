@@ -102,7 +102,7 @@ public class GameScreen extends Page {
     private float accumulator;
 
     /**
-     * Called every frame calls all other functions that need to be called every frame by rasing events and update methods
+     * Called every frame calls all other functions that need to be called every frame by raising events and update methods
      *
      * @param delta delta time
      */
