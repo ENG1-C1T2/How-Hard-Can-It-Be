@@ -1,0 +1,211 @@
+body {
+  margin: 0px;
+  background-image: url('gamescreenshot.png');
+  /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  image-rendering: crisp-edges;
+  /* background-color: rgb(137, 142, 145); */
+}
+
+hr {
+  margin-block-start: 2em;
+  margin-block-end: 2em;
+  /* border-color: #000000; */
+}
+
+html, body {
+  margin:0;
+  padding:0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Add a black background color to the top navigation */
+ .topnav {
+    background-color: rgba(51, 51, 51, 0.8);
+    width: 100%;
+    position: fixed;
+  }
+  
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: var(--topnav-pad);
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  /* Change the color of links on hover */
+  .topnav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    background-color: #bd0f1e;
+    color: white;
+  }
+
+  /* Navbar container */
+  .navbar {
+    overflow: hidden;
+    background-color: #333;
+    font-family: Arial;
+  }
+  
+  /* Links inside the navbar */
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: var(--topnav-pad);
+    text-decoration: none;
+  }
+  
+  /* The dropdown container */
+  .dropdown {
+    float: left;
+    overflow: hidden;
+  }
+  
+  /* Dropdown button */
+  .dropdown .dropbtn {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: var(--topnav-pad);
+    background-color: inherit;
+    font-family: inherit; /* Important for vertical align on mobile phones */
+    margin: 0; /* Important for vertical align on mobile phones */
+  }
+  
+  /* Add a red background color to navbar links on hover */
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: red;
+  }
+  
+  /* Dropdown content (hidden by default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+  
+  /* Add a grey background color to dropdown links on hover */
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  #background {
+    min-height: 100%;
+    background-color: #49494963;
+    background-color: #41414191;
+    background-color: #cccccc70;
+    background-color: #27313487;
+  }
+
+  #main-area {
+    /* margin-left: 10%; */
+    /* margin-right: 10%; */
+    padding-top: 68px;
+    text-align: center;
+  }
+
+  #text-area {
+    padding: 20px;
+    padding-left: 25%;
+    padding-right: 25%;
+    /* margin-top: 20px; */
+    /* color:  white; */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 21px;
+    text-align: left;
+    color: #c4c9cf;
+    color: #e8ecf2;
+  }
+
+  h1 {
+    font-size: 170%;
+    margin-bottom: 35px;
+    font-weight: bold;
+    /* padding-right: min(30%, 300px); */
+    text-decoration: underline;
+  }
+
+  h2 {
+    font-size: 130%;
+    margin-bottom: 35px;
+    font-weight: bold;
+    padding-left: 3%;
+  }
+
+  p {
+    font-size:100%;
+    /* color : #dcdcdc; */
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  .break {
+    margin-top: 30px;
+  }
+
+  img {
+    margin: auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    max-width: 90%;
+    width: 70%;
+  }
+
+  p a {
+    color: #080657;
+    color: #b2c3ff;
+  }
+
+  :root {
+    --topnav-pad: 24px 16px;
+  }
+
+  .flexbox { 
+    flex-grow: 1; 
+    border: none; 
+    margin: 0; 
+    padding: 0; 
+  }
+
+  .docs-container { 
+    display: flex; 
+    width: 100%; 
+    height: 100%; 
+    padding-top: 68px; 
+    box-sizing: border-box;
+    flex-direction: column; 
+    background-color: blue; 
+    overflow: hidden; 
+  }
