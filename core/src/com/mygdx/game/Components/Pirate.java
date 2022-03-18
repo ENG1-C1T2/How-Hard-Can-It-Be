@@ -7,6 +7,9 @@ import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.utils.QueueFIFO;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  * Gives the concepts of health plunder, etc. Allows for firing of cannonballs, factions, death, targets
  */
@@ -16,7 +19,7 @@ public class Pirate extends Component {
     protected boolean isAlive;
     private int health;
     private int ammo;
-    private final int attackDmg;
+    private int attackDmg;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -36,6 +39,33 @@ public class Pirate extends Component {
         ammo = starting.getInt("ammo");
     }
 
+    //manage power ups:
+    public void healthUpgrade() {
+        if (plunder > 10) {
+            plunder -= 10;
+            health += 20;
+        }
+    }
+
+    public void ammoUpgrade() {
+        if (plunder > 20) {
+            plunder -= 20;
+            ammo += 5;
+        }
+    }
+
+    public void damageUpgrade() {
+        if (plunder > 15) {
+            plunder -= 15;
+            attackDmg += 10;
+        }
+    }
+
+
+
+
+
+
     public void addTarget(Ship target) {
         targets.add(target);
     }
@@ -47,6 +77,9 @@ public class Pirate extends Component {
     public void addPlunder(int money) {
         plunder += money;
     }
+
+
+
 
     public Faction getFaction() {
         return GameManager.getFaction(factionId);
@@ -89,6 +122,8 @@ public class Pirate extends Component {
     public int getHealth() {
         return health;
     }
+
+    public void setHealth(int newHealth) { health = newHealth;}
 
     /**
      * if dst to target is less than attack range
@@ -155,4 +190,6 @@ public class Pirate extends Component {
     public QueueFIFO<Ship> getTargets() {
         return targets;
     }
+
+
 }

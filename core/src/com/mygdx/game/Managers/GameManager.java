@@ -21,6 +21,8 @@ public final class GameManager {
     private static ArrayList<Faction> factions;
     private static ArrayList<Ship> ships;
     private static ArrayList<College> colleges;
+    private static ArrayList<String> powerUps;
+
 
     private static final int cacheSize = 20;
     private static ArrayList<CannonBall> ballCache;
@@ -43,6 +45,7 @@ public final class GameManager {
         ships = new ArrayList<>();
         ballCache = new ArrayList<>(cacheSize);
         colleges = new ArrayList<>();
+        powerUps = new ArrayList<>();
 
         for (int i = 0; i < cacheSize; i++) {
             ballCache.add(new CannonBall());
@@ -65,6 +68,8 @@ public final class GameManager {
     public static void update() {
         QuestManager.checkCompleted();
     }
+
+    public static ArrayList<String> getPowerUps() {return powerUps;}
 
     /**
      * Player is always in ships at index 0

@@ -125,6 +125,10 @@ public class GameScreen extends Page {
         if (Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE)) {
             parent.setScreen(parent.end);
         }
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Z)) {
+            parent.pause.update();
+            parent.setScreen(parent.pause);
+        }
         super.render(delta);
     }
 
