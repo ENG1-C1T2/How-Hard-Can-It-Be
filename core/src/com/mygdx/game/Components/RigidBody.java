@@ -127,7 +127,7 @@ public class RigidBody extends Component {
     /**
      * Sets the bottom left position of the object
      *
-     * @param offset should plly offset
+     * @param offset should probably offset
      */
     public void setPosition(Vector2 position, boolean offset) {
         Body b = PhysicsManager.getBody(bodyId);

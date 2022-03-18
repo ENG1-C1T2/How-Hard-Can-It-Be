@@ -41,7 +41,7 @@ public abstract class Component {
     }
 
     /**
-     * Checks if the passed requirements exist will crash if they aren't
+     * Checks if the passed requirements exist; will crash if they aren't
      */
     private void checkRequirements() {
         if (reqsMet) {

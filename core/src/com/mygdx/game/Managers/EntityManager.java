@@ -27,7 +27,7 @@ public final class EntityManager {
     }
 
     /**
-     * Dont call manually
+     * Don't call manually
      *
      * @param c the comp to add
      */
@@ -37,7 +37,7 @@ public final class EntityManager {
     }
 
     /**
-     * Dont call manually
+     * Don't call manually
      *
      * @param e the entity to add
      */
@@ -103,7 +103,7 @@ public final class EntityManager {
     }
 
     /**
-     * automatically calls initialised if not done so
+     * automatically calls initialised if not already done so
      */
     private static void tryInit() {
         if (!initialized) {
