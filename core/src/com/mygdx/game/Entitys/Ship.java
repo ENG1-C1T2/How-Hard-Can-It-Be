@@ -3,10 +3,7 @@ package com.mygdx.game.Entitys;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ObjectMap;
-import com.mygdx.game.Components.Pirate;
-import com.mygdx.game.Components.Renderable;
-import com.mygdx.game.Components.RigidBody;
-import com.mygdx.game.Components.Transform;
+import com.mygdx.game.Components.*;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
@@ -172,6 +169,7 @@ public class Ship extends Entity implements CollisionCallBack {
     public void EnterTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).EnterTrigger(info);
+            //getComponent(Pirate.class).takeDamage(10f);
         }
     }
 
@@ -182,6 +180,7 @@ public class Ship extends Entity implements CollisionCallBack {
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
+
         }
     }
 }
