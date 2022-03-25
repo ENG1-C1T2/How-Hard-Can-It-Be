@@ -81,20 +81,20 @@ public class GameScreen extends Page {
         tutWindow.add(table);
         t1.add(tutWindow);
 
-        table.add(new Label("Move with", parent.skin)).top().left();
+        table.add(new Label("Movement:", parent.skin)).top().left();
         table.add(new Image(parent.skin, "key-w"));
-        table.add(new Image(parent.skin, "key-s"));
         table.add(new Image(parent.skin, "key-a"));
+        table.add(new Image(parent.skin, "key-s"));
         table.add(new Image(parent.skin, "key-d"));
         table.row();
-        table.add(new Label("Shoot in direction of mouse", parent.skin)).left();
+        table.add(new Label("Shoot With Cursor:", parent.skin)).left();
         //table.add(new Image(parent.skin, "space"));
         table.add(new Image(parent.skin, "mouse"));
         table.row();
-        table.add(new Label("Shoot in direction of ship", parent.skin)).left();
+        table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
-        table.add(new Label("Quit", parent.skin)).left();
+        table.add(new Label("Quit:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-esc"));
 
     }
