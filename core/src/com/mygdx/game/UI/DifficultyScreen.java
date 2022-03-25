@@ -7,77 +7,66 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
-import com.mygdx.game.Components.Pirate;
-import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.ResourceManager;
 import com.mygdx.game.PirateGame;
 
+import java.awt.*;
+
 import static com.mygdx.utils.Constants.VIEWPORT_HEIGHT;
 
-/**
- * Contains widgets defining the start-of-game menu screen.
- */
-public class MenuScreen extends Page {
-    public int difficulty;
-    public MenuScreen(PirateGame parent) {
-        super(parent);
-        difficulty = 1;
-    }
 
-    /**
-     * Create menu widgets such as start button, labels, etc.
-     */
+public class DifficultyScreen extends Page {
+    public DifficultyScreen(PirateGame parent) {super(parent);}
+
     @Override
     protected void CreateActors() {
-
         Table t = new Table();
         t.setFillParent(true);
 
         float space = VIEWPORT_HEIGHT * 0.25f;
 
-        t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg")));
-        Label l = new Label("Pirates the movie the game", parent.skin);
+        Label l = new Label("Select difficulty:", parent.skin);
         l.setFontScale(2);
         t.add(l).top().spaceBottom(space * 0.5f);
         t.row();
 
-        TextButton play = new TextButton("Play", parent.skin);
-        play.addListener(new ChangeListener() {
+
+        TextButton easy = new TextButton("Easy", parent.skin);
+        easy.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                GameManager.getPlayer().getComponent(Pirate.class).updateSettings(difficulty);
-                parent.setScreen(parent.game);
+                parent.menu.difficulty = 0;
+                parent.setScreen(parent.menu);
             }
         });
-        t.add(play).top().size(100, 25).spaceBottom(space);
+        t.add(easy).top().size(100, 25).spaceBottom(space);
         t.row();
 
-        TextButton difficulty = new TextButton("Difficulty", parent.skin);
-        difficulty.addListener(new ChangeListener() {
+        TextButton medium = new TextButton("Medium", parent.skin);
+        medium.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                parent.setScreen(parent.difficulty);
+                parent.menu.difficulty = 1;
+                parent.setScreen(parent.menu);
             }
         });
-        t.add(difficulty).top().size(100, 25).spaceBottom(space);
+        t.add(medium).top().size(100, 25).spaceBottom(space);
         t.row();
 
-        TextButton quit = new TextButton("Quit", parent.skin);
-        quit.addListener(new ChangeListener() {
+        TextButton hard = new TextButton("Hard", parent.skin);
+        hard.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                Gdx.app.exit();
-                System.exit(0);
+                parent.menu.difficulty = 2;
+                parent.setScreen(parent.menu);
             }
         });
-        t.add(quit).size(100, 25).top().spaceBottom(space);
+        t.add(hard).size(100, 25).top().spaceBottom(space);
 
         t.top();
 
         actors.add(t);
     }
-
-
 
     @Override
     public void show() {
@@ -97,3 +86,4 @@ public class MenuScreen extends Page {
         t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg"))); // prevent the bg being stretched
     }
 }
+

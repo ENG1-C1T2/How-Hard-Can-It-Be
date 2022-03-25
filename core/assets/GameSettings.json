@@ -3,12 +3,14 @@
     "health": 100,
     "damage": 10.0,
     "plunder": 0,
+
     "playerSpeed": 100.0,
     "cannonSpeed": 150.0,
     "argoRange_tiles": 9.0,
     "attackRange_tiles": 4.0,
     "ammo": 50
   },
+  
   "AI": {
     "maxSpeed": 500.0,
     "accelerationTime": 0.01,
@@ -41,7 +43,7 @@
       }
     },
     {
-      "name": "Langwidth",
+      "name": "Langwith",
       "colour": "yellow",
       "position": {
         "x": 34,
@@ -53,7 +55,7 @@
       }
     },
     {
-      "name": "Goodrick",
+      "name": "Goodricke",
       "colour": "green",
       "position": {
         "x": 75,

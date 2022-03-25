@@ -83,17 +83,17 @@ public enum EnemyState implements State<NPCShip> {
                 } else if (p.canAttack()) {
                     m.changeState(ATTACK);
                 }
-                // if college attacked hunt
+                // if college attacked, hunt
                 else if (false) {
                     m.changeState(HUNT);
                 }
                 break;
             case PURSUE:
-                // if enter attack range attack
+                // if attack range is entered, attack
                 if (p.canAttack()) {
                     m.changeState(ATTACK);
                 }
-                // if leave detection range wander
+                // if detection range is left, wander
                 if (!p.canAttack() && !p.isAgro()) {
                     m.changeState(WANDER);
                 }
