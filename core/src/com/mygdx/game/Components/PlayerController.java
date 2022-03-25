@@ -93,6 +93,6 @@ public class PlayerController extends Component {
         if (Gdx.input.isKeyPressed(Input.Keys.D) || Gdx.input.isKeyPressed(Input.Keys.DPAD_RIGHT)) {
             dir.x += 1;
         }
-        return dir;
+        return dir.nor();
     }
 }

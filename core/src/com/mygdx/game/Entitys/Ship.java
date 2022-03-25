@@ -28,7 +28,7 @@ public class Ship extends Entity implements CollisionCallBack {
      */
     public Ship() {
         super(4);
-        currentDir = new Vector2();
+        currentDir = new Vector2(0,1);
         setName("Ship (" + shipCount++ + ")"); // each ship has a unique name
 
         if (shipDirections == null) {
@@ -37,10 +37,10 @@ public class Ship extends Entity implements CollisionCallBack {
             shipDirections.put(new Vector2(0, -1), "-down");
             shipDirections.put(new Vector2(1, 0), "-right");
             shipDirections.put(new Vector2(-1, 0), "-left");
-            shipDirections.put(new Vector2(1, 1), "-ur");
-            shipDirections.put(new Vector2(-1, 1), "-ul");
-            shipDirections.put(new Vector2(1, -1), "-dr");
-            shipDirections.put(new Vector2(-1, -1), "-dl");
+            shipDirections.put(new Vector2(1, 1).nor(), "-ur");
+            shipDirections.put(new Vector2(-1, 1).nor(), "-ul");
+            shipDirections.put(new Vector2(1, -1).nor(), "-dr");
+            shipDirections.put(new Vector2(-1, -1).nor(), "-dl");
         }
 
         Transform t = new Transform();
