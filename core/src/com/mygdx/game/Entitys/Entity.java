@@ -19,7 +19,7 @@ public class Entity {
 
     public Entity() {
         components = new ArrayList<>();
-        entityName = "Entity (" + ++entityCount + ")"; // makes ure by default every entity has a unique name (although it's not automatically important if they don't)
+        entityName = "Entity (" + ++entityCount + ")"; // makes sure by default that every entity has a unique name (although it's not automatically important if they don't)
         EntityManager.addEntity(this);
     }
 

@@ -54,7 +54,7 @@ public class QuestManager {
     }
 
     /**
-     * Creates a locate quest for a random position sourced from game settings
+     * Creates a 'locate' quest for a random position sourced from game settings
      */
     private static void rndLocateQuest() {
         final ArrayList<Float> locations = new ArrayList<>();
@@ -160,7 +160,7 @@ public class QuestManager {
     /**
      * Are there any quests
      *
-     * @return true if any non completed quest exirs
+     * @return true if any non completed quest exists
      */
     public static boolean anyQuests() {
         tryInit();

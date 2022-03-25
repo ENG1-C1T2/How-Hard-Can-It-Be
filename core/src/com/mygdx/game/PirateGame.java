@@ -36,7 +36,7 @@ public class PirateGame extends Game {
         ResourceManager.addTexture("menuBG.jpg");
         ResourceManager.addTexture("Chest.png");
         ResourceManager.loadAssets();
-        // cant load any more resources after this point (just functionally I choose not to implement)
+        // can't load any more resources after this point (just functionally I chose not to implement)
         stage = new Stage(new ScreenViewport());
         createSkin();
         menu = new MenuScreen(this);

@@ -113,7 +113,7 @@ public class Pirate extends Component {
             final Ship p = (Ship) parent;
             final Vector2 pos = p.getPosition();
             final float dst = pos.dst(targets.peek().getPosition());
-            // withing attack range
+            // within attack range
             return dst < Ship.getAttackRange();
         }
         return false;
@@ -147,7 +147,7 @@ public class Pirate extends Component {
     }
 
     /**
-     * Kill its self
+     * Kill itself
      */
     public void kill() {
         health = 0;
