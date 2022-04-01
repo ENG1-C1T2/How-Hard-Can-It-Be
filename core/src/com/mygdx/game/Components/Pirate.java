@@ -79,8 +79,18 @@ public class Pirate extends Component {
 
 
 
+    public void updateSettings (int difficulty) {
+        if (difficulty == 0) {
+            health = 200;
+            ammo = 100;
+            attackDmg = 20;
+        } else if (difficulty == 2) {
+            health = 50;
+            ammo = 25;
+            attackDmg = 5;
+        }
 
-
+    }
 
     public void addTarget(Ship target) {
         targets.add(target);
@@ -154,7 +164,7 @@ public class Pirate extends Component {
             final Ship p = (Ship) parent;
             final Vector2 pos = p.getPosition();
             final float dst = pos.dst(targets.peek().getPosition());
-            // withing attack range
+            // within attack range
             return dst < Ship.getAttackRange();
         }
         return false;
@@ -188,7 +198,7 @@ public class Pirate extends Component {
     }
 
     /**
-     * Kill its self
+     * Kill itself
      */
     public void kill() {
         health = 0;

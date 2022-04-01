@@ -6,6 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.utils.viewport.ScreenViewport;
 import com.mygdx.game.Managers.ResourceManager;
+import com.mygdx.game.UI.DifficultyScreen;
 import com.mygdx.game.UI.EndScreen;
 import com.mygdx.game.UI.GameScreen;
 import com.mygdx.game.UI.MenuScreen;
@@ -19,6 +20,7 @@ public class PirateGame extends Game {
     public GameScreen game;
     public EndScreen end;
     public PauseScreen pause;
+    public DifficultyScreen difficulty;
     public Stage stage;
     public Skin skin;
 
@@ -36,13 +38,14 @@ public class PirateGame extends Game {
         ResourceManager.addTexture("menuBG.jpg");
         ResourceManager.addTexture("Chest.png");
         ResourceManager.loadAssets();
-        // cant load any more resources after this point (just functionally I choose not to implement)
+        // can't load any more resources after this point (just functionally I chose not to implement)
         stage = new Stage(new ScreenViewport());
         createSkin();
         menu = new MenuScreen(this);
         game = new GameScreen(this, id_map);
         end = new EndScreen(this);
         pause = new PauseScreen(this);
+        difficulty = new DifficultyScreen(this);
         setScreen(menu);
     }
 

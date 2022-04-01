@@ -12,7 +12,7 @@ import com.mygdx.game.Managers.ResourceManager;
 import static com.mygdx.utils.Constants.TILE_SIZE;
 
 /**
- * Component that allows the rendering of tilemaps (has its own sprite batch)
+ * Component that allows the rendering of TileMaps (has its own sprite batch)
  */
 public class TileMap extends Component {
     TiledMap map;

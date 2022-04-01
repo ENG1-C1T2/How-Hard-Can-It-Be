@@ -3,10 +3,7 @@ package com.mygdx.game.Entitys;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ObjectMap;
-import com.mygdx.game.Components.Pirate;
-import com.mygdx.game.Components.Renderable;
-import com.mygdx.game.Components.RigidBody;
-import com.mygdx.game.Components.Transform;
+import com.mygdx.game.Components.*;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
@@ -31,7 +28,7 @@ public class Ship extends Entity implements CollisionCallBack {
      */
     public Ship() {
         super(4);
-        currentDir = new Vector2();
+        currentDir = new Vector2(0,1);
         setName("Ship (" + shipCount++ + ")"); // each ship has a unique name
 
         if (shipDirections == null) {
@@ -40,10 +37,10 @@ public class Ship extends Entity implements CollisionCallBack {
             shipDirections.put(new Vector2(0, -1), "-down");
             shipDirections.put(new Vector2(1, 0), "-right");
             shipDirections.put(new Vector2(-1, 0), "-left");
-            shipDirections.put(new Vector2(1, 1), "-ur");
-            shipDirections.put(new Vector2(-1, 1), "-ul");
-            shipDirections.put(new Vector2(1, -1), "-dr");
-            shipDirections.put(new Vector2(-1, -1), "-dl");
+            shipDirections.put(new Vector2(1, 1).nor(), "-ur");
+            shipDirections.put(new Vector2(-1, 1).nor(), "-ul");
+            shipDirections.put(new Vector2(1, -1).nor(), "-dr");
+            shipDirections.put(new Vector2(-1, -1).nor(), "-dl");
         }
 
         Transform t = new Transform();
@@ -172,6 +169,7 @@ public class Ship extends Entity implements CollisionCallBack {
     public void EnterTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).EnterTrigger(info);
+            //getComponent(Pirate.class).takeDamage(10f);
         }
     }
 
@@ -182,6 +180,7 @@ public class Ship extends Entity implements CollisionCallBack {
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
+
         }
     }
 }

@@ -15,14 +15,14 @@ public class LocateQuest extends Quest {
     public LocateQuest() {
         super();
         name = "Find a chest";
-        description = "North east";
+        description = "North East";
         reward = 100;
         loc = new Vector2();
         radius = -1;
     }
 
     /**
-     * The loc to go to and radius that the play has to be in to completed it
+     * The location to go to and the radius that the player has to be in to complete it
      *
      * @param pos location to find
      * @param r   leeway in completion

@@ -81,11 +81,12 @@ public class CannonBall extends Entity implements CollisionCallBack {
         t.setPosition(pos);
 
         RigidBody rb = getComponent(RigidBody.class);
-        Vector2 ta = dir.cpy().scl(speed * EntityManager.getDeltaTime());
-        Vector2 o = new Vector2(TILE_SIZE * t.getScale().x, TILE_SIZE * t.getScale().y);
-        Vector2 v = ta.cpy().sub(o);
+        Vector2 ta = dir.cpy().scl(speed); // was speed*EntityManager.getDeltaTime() for some randomness
+        //Vector2 o = new Vector2(TILE_SIZE * t.getScale().x, TILE_SIZE * t.getScale().y);
+        //Vector2 v = ta.cpy().sub(o);
+        //rb.setVelocity(v);    not sure the purpose of this code but it made the cannon ball shoot slightly down/left
 
-        rb.setVelocity(v);
+        rb.setVelocity(ta);
 
         getComponent(Renderable.class).show();
         shooter = sender;

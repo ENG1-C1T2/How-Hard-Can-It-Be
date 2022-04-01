@@ -32,14 +32,20 @@ public final class GameManager {
 
     private static TileMapGraph mapGraph;
 
+
     /**
      * facilitates creation of the game
      */
     public static void Initialize() {
+
+
         initialized = true;
         currentElement = 0;
+
+
         settings = new JsonReader().
                 parse(Gdx.files.internal("GameSettings.json"));
+
 
         factions = new ArrayList<>();
         ships = new ArrayList<>();
@@ -69,7 +75,6 @@ public final class GameManager {
         QuestManager.checkCompleted();
     }
 
-    public static ArrayList<String> getPowerUps() {return powerUps;}
 
     /**
      * Player is always in ships at index 0
