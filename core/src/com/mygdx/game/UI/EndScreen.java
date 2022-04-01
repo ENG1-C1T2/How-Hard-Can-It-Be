@@ -30,7 +30,7 @@ public class EndScreen extends Page {
      * Set game end screen status to report a win.
      */
     public void win() {
-        wonText.setText("Congrats You Have Won");
+        wonText.setText("You Win!");
     }
 
     /**

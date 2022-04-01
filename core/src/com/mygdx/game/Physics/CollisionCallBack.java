@@ -5,12 +5,12 @@ package com.mygdx.game.Physics;
  */
 public interface CollisionCallBack {
     /**
-     * Called once a collision has being notices
+     * Called once a collision has been noticed
      */
     void BeginContact(CollisionInfo info);
 
     /**
-     * Called after the collision has being solved
+     * Called after the collision has been solved
      */
     void EndContact(CollisionInfo info);
 
