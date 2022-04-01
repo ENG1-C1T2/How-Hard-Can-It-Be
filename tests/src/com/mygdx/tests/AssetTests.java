@@ -112,6 +112,6 @@ public class AssetTests {
     @Test
     public void testShipPNGExists(){
         assertTrue("This test will pass if the ship.png file exists",
-                Gdx.files.internal("ship.png").exists());
+                Gdx.files.internal("shi.png").exists());
     }
 }
