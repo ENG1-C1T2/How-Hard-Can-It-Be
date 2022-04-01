@@ -30,6 +30,10 @@ public class Player extends Ship {
         this(GameManager.getSettings().get("starting").getFloat("playerSpeed"));
     }
 
+    public void setSpeed(float newSpeed) {
+        getComponent(PlayerController.class).setSpeed(newSpeed);
+    }
+
     @Override
     public void cleanUp() {
         super.cleanUp();

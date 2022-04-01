@@ -23,6 +23,10 @@ public class PlayerController extends Component {
         setRequirements(ComponentType.RigidBody);
     }
 
+    public void setSpeed (float newSpeed) {
+        speed = newSpeed;
+    }
+
     /**
      * @param player the parent
      * @param speed  speed
@@ -50,6 +54,11 @@ public class PlayerController extends Component {
 
         RenderingManager.getCamera().position.set(new Vector3(player.getPosition(), 0.0f));
         RenderingManager.getCamera().update();
+
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
+            setSpeed(50000.0F);
+        }
 
         if (Gdx.input.isButtonJustPressed(Input.Buttons.LEFT)) {
             int x = Gdx.input.getX();
@@ -95,4 +104,5 @@ public class PlayerController extends Component {
         }
         return dir.nor();
     }
+
 }

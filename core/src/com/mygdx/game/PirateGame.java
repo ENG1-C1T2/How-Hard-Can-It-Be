@@ -10,6 +10,7 @@ import com.mygdx.game.UI.DifficultyScreen;
 import com.mygdx.game.UI.EndScreen;
 import com.mygdx.game.UI.GameScreen;
 import com.mygdx.game.UI.MenuScreen;
+import com.mygdx.game.UI.PauseScreen;
 
 /**
  * Contains class instances of game UI screens.
@@ -18,6 +19,7 @@ public class PirateGame extends Game {
     public MenuScreen menu;
     public GameScreen game;
     public EndScreen end;
+    public PauseScreen pause;
     public DifficultyScreen difficulty;
     public Stage stage;
     public Skin skin;
@@ -42,6 +44,7 @@ public class PirateGame extends Game {
         menu = new MenuScreen(this);
         game = new GameScreen(this, id_map);
         end = new EndScreen(this);
+        pause = new PauseScreen(this);
         difficulty = new DifficultyScreen(this);
         setScreen(menu);
     }

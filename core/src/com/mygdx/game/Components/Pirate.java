@@ -7,6 +7,9 @@ import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.utils.QueueFIFO;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 /**
  * Gives the concepts of health plunder, etc. Allows for firing of cannonballs, factions, death, targets
  */
@@ -17,6 +20,7 @@ public class Pirate extends Component {
     private int health;
     private int ammo;
     private int attackDmg;
+    private boolean damageReduce;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -34,7 +38,45 @@ public class Pirate extends Component {
         health = starting.getInt("health");
         attackDmg = starting.getInt("damage");
         ammo = starting.getInt("ammo");
+        damageReduce = false;
     }
+
+    //manage power ups:
+    public void healthUpgrade() {
+        if (plunder >= 10) {
+            plunder -= 10;
+            health += 20;
+        }
+    }
+
+    public void ammoUpgrade() {
+        if (plunder >= 20) {
+            plunder -= 20;
+            ammo += 5;
+        }
+    }
+
+    public void damageUpgrade() {
+        if (plunder >= 15) {
+            plunder -= 15;
+            attackDmg += 10;
+        }
+    }
+
+    public void speedUpgrade() {
+        if (plunder >= 25) {
+            plunder -= 25;
+            GameManager.getPlayer().setSpeed(50000.0F);
+        }
+    }
+
+    public void reduceDamage() {
+        if (plunder >= 30) {
+            plunder -= 30;
+            damageReduce = true;
+        }
+    }
+
 
 
     public void updateSettings (int difficulty) {
@@ -62,6 +104,9 @@ public class Pirate extends Component {
         plunder += money;
     }
 
+
+
+
     public Faction getFaction() {
         return GameManager.getFaction(factionId);
     }
@@ -71,12 +116,16 @@ public class Pirate extends Component {
     }
 
     public void takeDamage(float dmg) {
-        health -= dmg;
-        if (health <= 0) {
-            health = 0;
-            isAlive = false;
+            if (damageReduce == true) {
+                health -= dmg/2;
+            } else {
+                health -= dmg;
+            }
+            if (health <= 0) {
+                health = 0;
+                isAlive = false;
+            }
         }
-    }
 
     /**
      * Will shoot a cannonball assigning this.parent as the cannonball's parent (must be Ship atm)
@@ -103,6 +152,8 @@ public class Pirate extends Component {
     public int getHealth() {
         return health;
     }
+
+    public void setHealth(int newHealth) { health = newHealth;}
 
     /**
      * if dst to target is less than attack range
@@ -169,4 +220,6 @@ public class Pirate extends Component {
     public QueueFIFO<Ship> getTargets() {
         return targets;
     }
+
+
 }
