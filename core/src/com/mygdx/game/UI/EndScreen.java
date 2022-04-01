@@ -74,7 +74,7 @@ public class EndScreen extends Page {
     }
 
     /**
-     * Get player stats such as plunder etc. and display game end screen.
+     * Get player stats such as plunder and display the game end screen.
      */
     @Override
     public void show() {

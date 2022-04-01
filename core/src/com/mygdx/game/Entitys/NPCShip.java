@@ -130,7 +130,7 @@ public class NPCShip extends Ship implements CollisionCallBack {
     }
 
     /**
-     * if the agro fixture hit a ship set it as the target
+     * If the agro fixture hits a ship, set it as the target
      *
      * @param info the collision info
      */
@@ -150,7 +150,7 @@ public class NPCShip extends Ship implements CollisionCallBack {
     }
 
     /**
-     * if a target has left, remove it from the potential targets Queue
+     * If a target has left, remove it from the potential targets Queue
      *
      * @param info collision info
      */

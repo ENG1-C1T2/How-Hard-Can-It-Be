@@ -14,7 +14,7 @@ public class LocateQuest extends Quest {
 
     public LocateQuest() {
         super();
-        name = "Find a chest";
+        name = "Find a treasure chest";
         description = "North East";
         reward = 100;
         loc = new Vector2();
