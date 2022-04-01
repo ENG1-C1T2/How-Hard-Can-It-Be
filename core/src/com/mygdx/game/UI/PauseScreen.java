@@ -41,7 +41,7 @@ public class PauseScreen extends Page {
         plunderLabel = new Label(String.valueOf(plunder), parent.skin);
         t2.add(plunderLabel).top().size(50);
 
-        float space = VIEWPORT_HEIGHT * 0.25f;
+        float space = VIEWPORT_HEIGHT * 0.1f;
 
 
         t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg")));
@@ -96,6 +96,38 @@ public class PauseScreen extends Page {
             }
         });
         t.add(damage).size(200, 25).top().spaceBottom(space);
+        t.row();
+
+        Label l5 = new Label("25 plunder:", parent.skin);
+        l5.setFontScale(1);
+        t.add(l5).top().spaceBottom(space * 0.1f);
+        t.row();
+
+        TextButton speed = new TextButton("Increase speed", parent.skin);
+        speed.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                pirate.speedUpgrade();
+                parent.setScreen(parent.game);
+            }
+        });
+        t.add(speed).size(200, 25).top().spaceBottom(space);
+        t.row();
+
+        Label l6 = new Label("30 plunder:", parent.skin);
+        l6.setFontScale(1);
+        t.add(l6).top().spaceBottom(space * 0.1f);
+        t.row();
+
+        TextButton points = new TextButton("Reduce damage taken", parent.skin);
+        points.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                pirate.reduceDamage();
+                parent.setScreen(parent.game);
+            }
+        });
+        t.add(points).size(200, 25).top().spaceBottom(space);
         t.row();
 
         TextButton cancel = new TextButton("Cancel", parent.skin);

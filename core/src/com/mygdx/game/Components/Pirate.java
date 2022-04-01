@@ -20,6 +20,7 @@ public class Pirate extends Component {
     private int health;
     private int ammo;
     private int attackDmg;
+    private boolean damageReduce;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -37,27 +38,42 @@ public class Pirate extends Component {
         health = starting.getInt("health");
         attackDmg = starting.getInt("damage");
         ammo = starting.getInt("ammo");
+        damageReduce = false;
     }
 
     //manage power ups:
     public void healthUpgrade() {
-        if (plunder > 10) {
+        if (plunder >= 10) {
             plunder -= 10;
             health += 20;
         }
     }
 
     public void ammoUpgrade() {
-        if (plunder > 20) {
+        if (plunder >= 20) {
             plunder -= 20;
             ammo += 5;
         }
     }
 
     public void damageUpgrade() {
-        if (plunder > 15) {
+        if (plunder >= 15) {
             plunder -= 15;
             attackDmg += 10;
+        }
+    }
+
+    public void speedUpgrade() {
+        if (plunder >= 25) {
+            plunder -= 25;
+            GameManager.getPlayer().setSpeed(50000.0F);
+        }
+    }
+
+    public void reduceDamage() {
+        if (plunder >= 30) {
+            plunder -= 30;
+            damageReduce = true;
         }
     }
 
@@ -90,12 +106,16 @@ public class Pirate extends Component {
     }
 
     public void takeDamage(float dmg) {
-        health -= dmg;
-        if (health <= 0) {
-            health = 0;
-            isAlive = false;
+            if (damageReduce == true) {
+                health -= dmg/2;
+            } else {
+                health -= dmg;
+            }
+            if (health <= 0) {
+                health = 0;
+                isAlive = false;
+            }
         }
-    }
 
     /**
      * Will shoot a cannonball assigning this.parent as the cannonball's parent (must be Ship atm)
