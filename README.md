@@ -1,5 +1,5 @@
 # How-Hard-Can-It-Be (ENG1 Team 2 Takeover)
-[![Test Project](https://github.com/ENG1-C1T2/York-Pirates-2/actions/workflows/test.yml/badge.svg)](https://github.com/ENG1-C1T2/York-Pirates-2/actions/workflows/test.yml)
+[![tests](https://github.com/ENG1-C1T2/York-Pirates-2/actions/workflows/test.yml/badge.svg)](https://github.com/ENG1-C1T2/York-Pirates-2/actions/workflows/test.yml)
 
 ![Screenshot of game](game.png)
 
