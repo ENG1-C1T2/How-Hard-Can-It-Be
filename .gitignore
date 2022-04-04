@@ -1,3 +1,7 @@
+# Test build artifacts
+
+/tests/build/
+
 ## Added by Alex
 gradle.properties
 
