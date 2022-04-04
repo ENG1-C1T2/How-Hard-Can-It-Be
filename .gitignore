@@ -1,6 +1,10 @@
 ## Added by Alex
 gradle.properties
 
+# VSCode
+
+/.vscode/
+
 ## Java
 
 *.class
