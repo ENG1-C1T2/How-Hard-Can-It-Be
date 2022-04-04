@@ -30,7 +30,7 @@ public class EndScreen extends Page {
      * Set game end screen status to report a win.
      */
     public void win() {
-        wonText.setText("Congrats You Have Won");
+        wonText.setText("You Win!");
     }
 
     /**
@@ -74,7 +74,7 @@ public class EndScreen extends Page {
     }
 
     /**
-     * Get player stats such as plunder etc. and display game end screen.
+     * Get player stats such as plunder and display the game end screen.
      */
     @Override
     public void show() {

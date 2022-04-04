@@ -13,7 +13,7 @@ public final class Constants {
      */
     public static void INIT_CONSTANTS() {
         // FULLSCREEN = !Boolean.parseBoolean(System.getProperty("windowed"));
-        FULLSCREEN = false;
+        FULLSCREEN = false; //preferable to be fullscreen?
         try {
             SCREEN_WIDTH = Gdx.graphics.getWidth();
             SCREEN_HEIGHT = Gdx.graphics.getHeight();

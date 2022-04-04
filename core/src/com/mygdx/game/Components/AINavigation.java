@@ -109,7 +109,6 @@ public class AINavigation extends Component implements Steerable<Vector2> {
     }
 
     // Overrides for steerable
-
     @Override
     public Vector2 getLinearVelocity() {
         getComps();

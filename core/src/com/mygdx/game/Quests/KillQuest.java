@@ -12,7 +12,7 @@ public class KillQuest extends Quest {
 
     public KillQuest() {
         super();
-        name = "Kill the College!";
+        name = "Destroy the College!";
         description = "KILL KILL KILL";
         reward = 100;
         target = null;
