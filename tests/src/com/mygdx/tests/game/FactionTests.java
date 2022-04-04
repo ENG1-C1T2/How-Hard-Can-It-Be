@@ -7,12 +7,19 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.Random;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(GdxTestRunner.class)
 
 public class FactionTests {
     Faction faction;
+
+    private float randomFloat(int min, int max){
+        Random r = new Random();
+        return min + r.nextFloat() * (max - min);
+    }
 
 
     @Test
@@ -28,8 +35,14 @@ public class FactionTests {
 
     @Test
     public void testFaction(){
-        Vector2 pos = new Vector2(1.0F, 1.0F);
-        Vector2 spawn = new Vector2(34.6F, 98.4F);
+        float x1 = randomFloat(1, 100);
+        float y1 = randomFloat(1, 100);
+
+        float x2 = randomFloat(1, 100);
+        float y2 = randomFloat(1, 100);
+
+        Vector2 pos = new Vector2(x1, y1);
+        Vector2 spawn = new Vector2(x2, y2);
 
         faction = new Faction("Arsenal", "Red", pos, spawn, 4);
 

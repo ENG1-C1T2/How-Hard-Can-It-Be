@@ -63,7 +63,7 @@ public class AssetTests {
     @Test
     public void testBoatsTXTExists(){
         assertTrue("This test will pass if the boats.txt file exists",
-                Gdx.files.internal("boats.txt").exists());
+                Gdx.files.internal("Boats.txt").exists());
     }
 
 
@@ -77,7 +77,7 @@ public class AssetTests {
     @Test
     public void testChestPNGExists(){
         assertTrue("This test will pass if the chests.png file exists",
-                Gdx.files.internal("chest.png").exists());
+                Gdx.files.internal("Chest.png").exists());
     }
 
 
