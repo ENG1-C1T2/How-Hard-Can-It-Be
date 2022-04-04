@@ -17,7 +17,7 @@ public class AssetTests {
 
     @Test
     public void testUISkinAssetExists(){
-        assertTrue("This test will only pass if the UISkin assets exist",
+        assertTrue("This test will only pass if the UISkin asset exists",
                 Gdx.files.internal("UISkin").exists());
     }
 
