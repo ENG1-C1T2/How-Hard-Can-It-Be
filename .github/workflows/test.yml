@@ -14,7 +14,7 @@ on:
     branches: [ main ]
 
 jobs:
-  test:
+  run-tests:
     runs-on: ubuntu-latest
     steps:
     - name: Set up JDK 11
@@ -43,6 +43,8 @@ jobs:
 
   report:
     runs-on: ubuntu-latest
+    needs: run-tests
+    
     steps:
       - uses: actions/checkout@v2
         with:
