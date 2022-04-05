@@ -6,10 +6,7 @@ import com.badlogic.gdx.ai.steer.behaviors.Arrive;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.game.AI.EnemyState;
-import com.mygdx.game.Components.AINavigation;
-import com.mygdx.game.Components.Pirate;
-import com.mygdx.game.Components.RigidBody;
-import com.mygdx.game.Components.Transform;
+import com.mygdx.game.Components.*;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Physics.CollisionCallBack;
 import com.mygdx.game.Physics.CollisionInfo;
@@ -70,6 +67,9 @@ public class NPCShip extends Ship implements CollisionCallBack {
     @Override
     public void update() {
         super.update();
+        if (getHealth() <= 0) {
+            removeOnDeath();
+        }
         stateMachine.update();
 
         // System.out.println(getComponent(Pirate.class).targetCount());
@@ -136,17 +136,20 @@ public class NPCShip extends Ship implements CollisionCallBack {
      */
     @Override
     public void EnterTrigger(CollisionInfo info) {
-        if (!(info.a instanceof Ship)) {
-            return;
+        if (info.a instanceof CannonBall && isAlive()) {
+            ((CannonBall) info.a).kill();
+            getComponent(Pirate.class).kill();
         }
-        Ship other = (Ship) info.a;
-        if (Objects.equals(other.getComponent(Pirate.class).getFaction().getName(), getComponent(Pirate.class).getFaction().getName())) {
-            // is the same faction
-            return;
+        if (info.a instanceof Ship) {
+            Ship other = (Ship) info.a;
+            if (Objects.equals(other.getComponent(Pirate.class).getFaction().getName(), getComponent(Pirate.class).getFaction().getName())) {
+                // is the same faction
+                return;
+            }
+            // add the new collision as a new target
+            Pirate pirate = getComponent(Pirate.class);
+            pirate.addTarget(other);
         }
-        // add the new collision as a new target
-        Pirate pirate = getComponent(Pirate.class);
-        pirate.addTarget(other);
     }
 
     /**
@@ -169,4 +172,17 @@ public class NPCShip extends Ship implements CollisionCallBack {
             }
         }
     }
+
+
+    private void removeOnDeath() {
+            getComponent(Renderable.class).hide();
+            Transform t = getComponent(Transform.class);
+            t.setPosition(10000, 10000);
+
+            RigidBody rb = getComponent(RigidBody.class);
+            rb.setPosition(t.getPosition());
+            rb.setVelocity(0, 0);
+
+            stopMovement();
+        }
 }
