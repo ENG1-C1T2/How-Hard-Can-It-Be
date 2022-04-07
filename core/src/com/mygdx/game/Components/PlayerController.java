@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector3;
 import com.mygdx.game.Entitys.Player;
 import com.mygdx.game.Entitys.Ship;
 import com.mygdx.game.Managers.RenderingManager;
+import com.mygdx.game.PirateGame;
 
 import static com.mygdx.utils.Constants.HALF_DIMENSIONS;
 
@@ -44,6 +45,7 @@ public class PlayerController extends Component {
     public void update() {
         super.update();
         final float s = speed;
+
 
         Vector2 dir = getDirFromWASDInput();
         ((Ship) parent).setShipDirection(dir);

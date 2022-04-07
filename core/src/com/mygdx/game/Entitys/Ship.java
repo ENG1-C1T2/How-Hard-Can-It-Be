@@ -78,6 +78,10 @@ public class Ship extends Entity implements CollisionCallBack {
         setShipDirection("-up");
     }
 
+    public int getFaction () {
+        return getComponent(Pirate.class).getFaction().id;
+    }
+
     /**
      * gets the string representation of the direction the ship is facing
      *
@@ -171,6 +175,16 @@ public class Ship extends Entity implements CollisionCallBack {
             ((CollisionCallBack) info.b).EnterTrigger(info);
             //getComponent(Pirate.class).takeDamage(10f);
         }
+        if (info.a instanceof CannonBall && isAlive()) {
+            if (((CannonBall) info.a).getShooter().getFaction() != getFaction()) {
+                ((CannonBall) info.a).kill();
+                int health = getComponent(Pirate.class).getHealth();
+                getComponent(Pirate.class).setHealth(health - 10);
+            }
+
+        }
+
+
     }
 
     /**

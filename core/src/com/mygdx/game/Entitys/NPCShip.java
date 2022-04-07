@@ -22,6 +22,7 @@ public class NPCShip extends Ship implements CollisionCallBack {
     public StateMachine<NPCShip, EnemyState> stateMachine;
     private static JsonValue AISettings;
     private final QueueFIFO<Vector2> path;
+    private long shootTime;
 
     /**
      * Creates an initial state machine
@@ -29,6 +30,8 @@ public class NPCShip extends Ship implements CollisionCallBack {
     public NPCShip() {
         super();
         path = new QueueFIFO<>();
+
+        shootTime = 0;
 
         if (AISettings == null) {
             AISettings = GameManager.getSettings().get("AI");
@@ -70,6 +73,13 @@ public class NPCShip extends Ship implements CollisionCallBack {
         if (getHealth() <= 0) {
             removeOnDeath();
         }
+        if (getComponent(Pirate.class).canAttack()) {
+            if (System.nanoTime() - shootTime > 1000000000) {
+                super.shoot();
+                shootTime = System.nanoTime();
+            }
+        }
+
         stateMachine.update();
 
         // System.out.println(getComponent(Pirate.class).targetCount());
@@ -92,6 +102,8 @@ public class NPCShip extends Ship implements CollisionCallBack {
             stopMovement();
             return;
         }
+
+
         AINavigation nav = getComponent(AINavigation.class);
 
         Arrive<Vector2> arrives = new Arrive<>(nav,
@@ -137,8 +149,11 @@ public class NPCShip extends Ship implements CollisionCallBack {
     @Override
     public void EnterTrigger(CollisionInfo info) {
         if (info.a instanceof CannonBall && isAlive()) {
-            ((CannonBall) info.a).kill();
-            getComponent(Pirate.class).kill();
+            if (((CannonBall) info.a).getShooter().getFaction() != super.getFaction()) {
+                ((CannonBall) info.a).kill();
+                getComponent(Pirate.class).kill();
+            }
+
         }
         if (info.a instanceof Ship) {
             Ship other = (Ship) info.a;
@@ -148,7 +163,9 @@ public class NPCShip extends Ship implements CollisionCallBack {
             }
             // add the new collision as a new target
             Pirate pirate = getComponent(Pirate.class);
+
             pirate.addTarget(other);
+
         }
     }
 
