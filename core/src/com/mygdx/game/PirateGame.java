@@ -58,6 +58,8 @@ public class PirateGame extends Game {
         game.dispose();
         stage.dispose();
         skin.dispose();
+        pause.dispose();
+        difficulty.dispose();
     }
 
     /**
