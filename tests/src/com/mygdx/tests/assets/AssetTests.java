@@ -1,12 +1,12 @@
-package com.mygdx.tests;
+package com.mygdx.tests.assets;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.tests.GdxTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
-
 
 @RunWith(GdxTestRunner.class)
 public class AssetTests {
@@ -34,7 +34,7 @@ public class AssetTests {
 
     @Test
     public void testBeachTilesetPNGExists(){
-        assertTrue("This test will only pass if the Beach Tileset asset exists",
+        assertTrue("This test will  pass if the Beach Tileset asset exists",
                 Gdx.files.internal("Beach Tileset.png").exists());
     }
 

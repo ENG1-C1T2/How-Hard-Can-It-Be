@@ -133,7 +133,7 @@ public class GameScreen extends Page {
     }
 
     /**
-     * disposed of all stuff it something is missing from this method you will get memory leaks
+     * Disposes of all stuff. If something is missing from this method you will get memory leaks.
      */
     @Override
     public void dispose() {

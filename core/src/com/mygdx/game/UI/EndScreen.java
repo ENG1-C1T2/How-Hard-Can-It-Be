@@ -44,7 +44,7 @@ public class EndScreen extends Page {
         float space = VIEWPORT_HEIGHT * 0.25f;
         t.setFillParent(true);
         actors.add(t);
-        wonText = new Label("You have lost", parent.skin);
+        wonText = new Label("You Have Died", parent.skin);
         wonText.setFontScale(2);
         t.top();
         t.add(wonText).top().spaceBottom(space);

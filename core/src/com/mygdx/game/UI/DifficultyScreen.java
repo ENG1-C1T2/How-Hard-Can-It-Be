@@ -16,7 +16,8 @@ import static com.mygdx.utils.Constants.VIEWPORT_HEIGHT;
 
 /**
  * Added for assessment 2
- *
+ * You are presented with 3 difficulties; easy, medium and hard.
+ * The default is medium.
  */
 public class DifficultyScreen extends Page {
     public DifficultyScreen(PirateGame parent) {super(parent);}

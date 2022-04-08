@@ -174,7 +174,6 @@ public class Ship extends Entity implements CollisionCallBack {
     public void EnterTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).EnterTrigger(info);
-            //getComponent(Pirate.class).takeDamage(10f);
         }
         if (info.a instanceof CannonBall && isAlive()) {
             if (((CannonBall) info.a).getShooter().getFaction() != getFaction()) {
@@ -182,10 +181,16 @@ public class Ship extends Entity implements CollisionCallBack {
                 int health = getComponent(Pirate.class).getHealth();
                 getComponent(Pirate.class).setHealth(health - 10);
             }
-
         }
-
-
+        /*
+        //Take health when colliding with an obstacle
+        if (!(info.b instanceof WorldMap)) {
+            ((CollisionCallBack) info.b).EnterTrigger(info);
+            int health = getComponent(Pirate.class).getHealth();
+            getComponent(Pirate.class).setHealth(health - 10);
+            //getComponent(Pirate.class).takeDamage(10f);
+         }
+         */
     }
 
     /**
@@ -199,12 +204,3 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 }
 
-/**
- //Take health when colliding with an obstacle
- if (!(info.b instanceof WorldMap)) {
- //((CollisionCallBack) info.b).EnterTrigger(info);
- int health = getComponent(Pirate.class).getHealth();
- getComponent(Pirate.class).setHealth(health - 10);
- //getComponent(Pirate.class).takeDamage(10f);
- }
- */
