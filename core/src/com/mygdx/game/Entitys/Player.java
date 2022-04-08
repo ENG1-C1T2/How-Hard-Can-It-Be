@@ -23,6 +23,10 @@ public class Player extends Ship {
         setName("Player");
     }
 
+    public int getHealth () {
+        return super.getHealth();
+    }
+
     /**
      * Adds ship with PlayerController component, loading its speed from GameManager settings.
      */
