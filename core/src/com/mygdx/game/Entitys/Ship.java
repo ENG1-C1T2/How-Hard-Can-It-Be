@@ -168,16 +168,8 @@ public class Ship extends Entity implements CollisionCallBack {
      */
     @Override
     public void EnterTrigger(CollisionInfo info) {
-        /**
-        //Take health when colliding with an obstacle
-        if (!(info.b instanceof WorldMap)) {
-            //((CollisionCallBack) info.b).EnterTrigger(info);
-            int health = getComponent(Pirate.class).getHealth();
-            getComponent(Pirate.class).setHealth(health - 10);
-            //getComponent(Pirate.class).takeDamage(10f);
-        }
-        */
-        //Other collisions:
+
+
     }
 
     /**
@@ -190,3 +182,13 @@ public class Ship extends Entity implements CollisionCallBack {
         }
     }
 }
+
+/**
+ //Take health when colliding with an obstacle
+ if (!(info.b instanceof WorldMap)) {
+ //((CollisionCallBack) info.b).EnterTrigger(info);
+ int health = getComponent(Pirate.class).getHealth();
+ getComponent(Pirate.class).setHealth(health - 10);
+ //getComponent(Pirate.class).takeDamage(10f);
+ }
+ */
