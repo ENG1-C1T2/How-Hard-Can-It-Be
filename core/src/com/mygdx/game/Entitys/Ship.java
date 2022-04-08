@@ -79,7 +79,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * gets the string representation of the direction the ship is facing
+     * Gets the string representation of the direction the ship is facing.
      *
      * @param dir the vector dir the ship is facing
      * @return the string representation of the direction
@@ -93,7 +93,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * gets the faction colour
+     * Gets the faction colour.
      *
      * @return the faction colour
      */
@@ -102,7 +102,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
+     * Will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
      *
      * @param dir the dir to face (used to get the correct sprite from the texture atlas
      */
@@ -111,7 +111,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
+     * Will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
      *
      * @param direction the dir to face (used to get the correct sprite from the texture atlas
      */
@@ -163,7 +163,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * if called on a Player against anything else call it on the other thing
+     * If called on a Player against anything else call it on the other thing
      */
     @Override
     public void EnterTrigger(CollisionInfo info) {
@@ -180,7 +180,7 @@ public class Ship extends Entity implements CollisionCallBack {
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
-            getComponent(Pirate.class).takeDamage(10f);
+            getComponent(Pirate.class).takeDamage(10f); //majorly buggy
         }
     }
 }
