@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.mygdx.game.Components.*;
+import com.mygdx.game.Managers.CollisionManager;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
@@ -163,24 +164,29 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * If called on a Player against anything else call it on the other thing
+     * If called on a Player against anything else, call it on the other thing.
      */
     @Override
     public void EnterTrigger(CollisionInfo info) {
-        if (this instanceof Player && !(info.b instanceof Player)) {
-            ((CollisionCallBack) info.b).EnterTrigger(info);
+        /**
+        //Take health when colliding with an obstacle
+        if (!(info.b instanceof WorldMap)) {
+            //((CollisionCallBack) info.b).EnterTrigger(info);
+            int health = getComponent(Pirate.class).getHealth();
+            getComponent(Pirate.class).setHealth(health - 10);
             //getComponent(Pirate.class).takeDamage(10f);
         }
+        */
+        //Other collisions:
     }
 
     /**
-     * if called on a Player against anything else call it on the other thing
+     * If called on a Player against anything else, call it on the other .
      */
     @Override
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
-            getComponent(Pirate.class).takeDamage(10f); //majorly buggy
         }
     }
 }
