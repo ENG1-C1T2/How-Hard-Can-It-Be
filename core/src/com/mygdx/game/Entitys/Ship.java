@@ -195,7 +195,6 @@ public class Ship extends Entity implements CollisionCallBack {
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
-            getComponent(Pirate.class).takeDamage(10f);
         }
     }
 }
