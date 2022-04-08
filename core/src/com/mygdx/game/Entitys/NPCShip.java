@@ -75,7 +75,7 @@ public class NPCShip extends Ship implements CollisionCallBack {
         }
         if (getComponent(Pirate.class).canAttack()) {
             if (System.nanoTime() - shootTime > 1000000000) {
-                super.shoot();
+                super.shoot(getComponent(Pirate.class).targetPosition());
                 shootTime = System.nanoTime();
             }
         }
