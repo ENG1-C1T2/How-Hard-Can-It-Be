@@ -94,6 +94,9 @@ public class GameScreen extends Page {
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
+        table.add(new Label("Pause:", parent.skin)).left();
+        table.add(new Image(parent.skin, "key-z"));
+        table.row();
         table.add(new Label("Quit:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-esc"));
 

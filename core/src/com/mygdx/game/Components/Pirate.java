@@ -21,6 +21,7 @@ public class Pirate extends Component {
     private int ammo;
     private int attackDmg;
     private boolean damageReduce;
+    private boolean speedIncrease;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -67,6 +68,7 @@ public class Pirate extends Component {
         if (plunder >= 25) {
             plunder -= 25;
             GameManager.getPlayer().setSpeed(50000.0F);
+            speedIncrease = true;
         }
     }
 
@@ -77,7 +79,7 @@ public class Pirate extends Component {
         }
     }
 
-
+    public boolean[] getActiveUpgrades(){ return new boolean[] {speedIncrease, damageReduce}; }
 
     public void updateSettings (int difficulty) {
         if (difficulty == 0) {

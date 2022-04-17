@@ -1,15 +1,19 @@
 package com.mygdx.game.Managers;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonReader;
 import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.game.AI.TileMapGraph;
+import com.mygdx.game.Components.Pirate;
 import com.mygdx.game.Components.Transform;
 import com.mygdx.game.Entitys.*;
 import com.mygdx.game.Faction;
+import com.mygdx.game.Quests.Quest;
 import com.mygdx.utils.QueueFIFO;
 import com.mygdx.utils.Utilities;
+import com.mygdx.game.Components.Pirate;
 
 import java.util.ArrayList;
 
@@ -29,6 +33,7 @@ public final class GameManager {
     private static int currentElement;
 
     private static JsonValue settings;
+    private static Preferences prefs;
 
     private static TileMapGraph mapGraph;
 
@@ -42,7 +47,7 @@ public final class GameManager {
         initialized = true;
         currentElement = 0;
 
-
+        prefs = Gdx.app.getPreferences("York-Pirates-2-save-data");
         settings = new JsonReader().
                 parse(Gdx.files.internal("GameSettings.json"));
 
@@ -190,6 +195,63 @@ public final class GameManager {
         //pos.add(dir.x * TILE_SIZE * 0.5f, dir.y * TILE_SIZE * 0.5f);
         ballCache.get(currentElement++).fire(pos, dir, p);
         currentElement %= cacheSize;
+    }
+
+    public static void load(){
+        tryInit();
+        Pirate player = getPlayer().getComponent(Pirate.class);
+
+        if(prefs.getBoolean("speedIncrease")){
+            player.addPlunder(25);
+            player.speedUpgrade();
+        }
+        if(prefs.getBoolean("damageReduce")){
+            player.addPlunder(30);
+            player.reduceDamage();
+        }
+
+        player.setAmmo(prefs.getInteger("playerAmmo"));
+        player.setHealth(prefs.getInteger("playerHealth"));
+        player.addPlunder(prefs.getInteger("playerPlunder"));
+
+        Ship p = (Ship) player.getParent();
+        p.setPosition(
+                prefs.getFloat("playerX"),
+                prefs.getFloat("playerY"));
+
+        for(int i = 1; i<ships.size(); i++){
+            Ship s = ships.get(i);
+            s.setFaction(prefs.getInteger("NPC"+String.valueOf(i)+"faction"));
+            s.setPosition(
+                    prefs.getFloat("NPC"+String.valueOf(i)+"x"),
+                    prefs.getFloat("NPC"+String.valueOf(i)+"y"));
+        }
+    }
+
+    public static void save(){
+        Player player = getPlayer();
+
+        // player data
+        prefs.putBoolean("save",true);
+        prefs.putInteger("playerAmmo",player.getAmmo());
+        prefs.putInteger("playerHealth",player.getHealth());
+        prefs.putInteger("playerPlunder",player.getPlunder());
+        prefs.putFloat("playerX",player.getPosition().x);
+        prefs.putFloat("playerY",player.getPosition().y);
+
+        boolean[] upgrades = player.getComponent(Pirate.class).getActiveUpgrades();
+        prefs.putBoolean("speedIncrease",upgrades[0]);
+        prefs.putBoolean("damageReduce",upgrades[1]);
+
+        // npc data
+        for(int i = 1; i<ships.size(); i++){
+            Ship s = ships.get(i);
+            prefs.putInteger("NPC"+String.valueOf(i)+"faction", s.getFaction());
+            prefs.putFloat("NPC"+String.valueOf(i)+"x", s.getPosition().x);
+            prefs.putFloat("NPC"+String.valueOf(i)+"y", s.getPosition().y);
+        }
+
+        prefs.flush();
     }
 
     /**
