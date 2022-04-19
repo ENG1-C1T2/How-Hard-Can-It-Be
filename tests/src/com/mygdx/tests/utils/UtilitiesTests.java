@@ -102,4 +102,18 @@ public class UtilitiesTests{
                 () -> assertNotEquals(testDistance, shouldFail)
         );
     }
+
+    @Test
+    public void testDistanceToTilesFloat(){
+        float testDistance = randomFloat(1, 1000);
+
+        float testTiles = Utilities.distanceToTiles(testDistance);
+        float expectedTiles = (int) (testDistance/TILE_SIZE);
+        float shouldFail = (int) (testDistance*TILE_SIZE);
+
+        assertAll("An error has occurred converting the Distance to Tiles",
+                () -> assertEquals(testTiles, expectedTiles),
+                () -> assertNotEquals(testTiles, shouldFail)
+        );
+    }
 }
