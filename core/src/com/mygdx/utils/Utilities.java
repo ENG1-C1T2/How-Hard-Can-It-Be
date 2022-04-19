@@ -39,7 +39,7 @@ public final class Utilities {
     }
 
     /**
-     * checks the proximity of point a to point b
+     * Checks the proximity of point a to point b.
      *
      * @param a      first point
      * @param b      second point
@@ -75,7 +75,7 @@ public final class Utilities {
     }
 
     /**
-     * Random Vec2 in range
+     * Random Vec2 in range.
      *
      * @param min inclusive
      * @param max exclusive
@@ -87,7 +87,7 @@ public final class Utilities {
     }
 
     /**
-     * Chooses a random element
+     * Chooses a random element.
      *
      * @param list   source
      * @param choice the index of the chosen element
@@ -100,7 +100,7 @@ public final class Utilities {
     }
 
     /**
-     * floors the vector
+     * Floors the vector.
      *
      * @param a given vector
      * @return new vector floored
@@ -121,7 +121,7 @@ public final class Utilities {
 
 
     /**
-     * helper for System.out.println
+     * Helper for System.out.println
      *
      * @param v string
      */
@@ -131,7 +131,7 @@ public final class Utilities {
     }
 
     /**
-     * does array contain a
+     * Does array contain a
      *
      * @param array source
      * @param a     desired
