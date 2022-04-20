@@ -1,5 +1,6 @@
 package com.mygdx.tests.utils;
 
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.tests.GdxTestRunner;
 import com.mygdx.utils.Constants;
@@ -116,4 +117,144 @@ public class UtilitiesTests{
                 () -> assertNotEquals(testTiles, shouldFail)
         );
     }
+
+    @Test
+    public void testDistanceToTilesVector(){
+        float x = randomFloat(1, 1000);
+        float y = randomFloat(1, 1000);
+
+        Vector2 testDistance = new Vector2(x, y);
+        Vector2 testTiles = Utilities.distanceToTiles(testDistance);
+        Vector2 expectedTiles = testDistance.cpy().scl(1.0f / TILE_SIZE);
+        Vector2 shouldFail = testDistance.cpy().scl(TILE_SIZE);
+
+        assertAll("An Error has occurred converting the Distance to Tiles.",
+                () -> assertEquals(testTiles, expectedTiles),
+                () -> assertNotEquals(testTiles, shouldFail)
+        );
+    }
+
+    @Test
+    public void testCheckProximity(){
+        float a = randomFloat(1, 1000);
+        float b = randomFloat(1, 1000);
+        float c = randomFloat(1, 1000);
+        float d = randomFloat(1, 1000);
+
+        Vector2 testVectorA = new Vector2(a, b);
+        Vector2 testVectorB = new Vector2(c, d);
+        float testRadius = randomFloat(1, 1000);
+
+        boolean testCheckProximity = Utilities.checkProximity(testVectorA, testVectorB, testRadius);
+        boolean expectedCheckProximity = (Math.abs(testVectorA.dst2(testVectorB)) < (testRadius*testRadius));
+        boolean shouldFail = (Math.abs(testVectorA.dst2(testVectorB)) > (testRadius*testRadius));
+
+        assertAll("An error has occurred Checking the Proximity of the Vectors",
+                () -> assertEquals(testCheckProximity, expectedCheckProximity),
+                () -> assertNotEquals(testCheckProximity, shouldFail)
+        );
+    }
+
+    @Test
+    public void testAngleBetween(){
+        float a = randomFloat(1, 1000);
+        float b = randomFloat(1, 1000);
+        float c = randomFloat(1, 1000);
+        float d = randomFloat(1, 1000);
+
+        Vector2 testVectorV = new Vector2(a, b);
+        Vector2 testVectorW = new Vector2(c, d);
+
+        float testAngle = Utilities.angleBetween(testVectorV, testVectorW);
+        float expectedAngle = MathUtils.atan2(testVectorW.y * testVectorV.x - testVectorW.x * testVectorV.y,
+                testVectorW.x * testVectorV.x + testVectorW.y * testVectorV.y);
+
+        //Changing * to / should make the Angle calculation fail.
+        float shouldFail = MathUtils.atan2(testVectorW.y / testVectorV.x - testVectorW.x / testVectorV.y,
+                testVectorW.x / testVectorV.x + testVectorW.y / testVectorV.y);
+
+        assertAll("Something has gone wrong calculating the angle.",
+                () -> assertEquals(testAngle, expectedAngle),
+                () -> assertNotEquals(testAngle, shouldFail)
+        );
+    }
+
+    @Test
+    public void testScaleFloat(){
+        float testX = randomFloat(1, 1000);
+        float testMin0 = randomFloat(1, 1000);
+        float testMax0 = randomFloat(1, 1000);
+        float testMin1 = randomFloat(1, 1000);
+        float testMax1 = randomFloat(1, 1000);
+
+        float testScale = Utilities.scale(testX, testMin0, testMax0, testMin1, testMax1);
+        float expectedScale = (testMax1 - testMin1) * ((testX - testMin0 * testX) / (testMax0 * testX - testMin0 * testX)) + testMin1;
+
+        //Flipped the * and / signs so this calculation should Fail
+        float shouldFail = (testMax1 - testMin1) / ((testX - testMin0 * testX) * (testMax0 * testX - testMin0 * testX)) + testMin1;
+
+        assertAll("Something has gone wrong calculating the Scale",
+                () -> assertEquals(testScale, expectedScale),
+                () -> assertNotEquals(testScale, shouldFail)
+        );
+    }
+
+    @Test
+    public void testScaleVector(){
+        float testX = randomFloat(1, 1000);
+        float a = randomFloat(1, 1000);
+        float b = randomFloat(1, 1000);
+        float c = randomFloat(1, 1000);
+        float d = randomFloat(1, 1000);
+
+        Vector2 testVectorA = new Vector2(a, b);
+        Vector2 testVectorB = new Vector2(c, d);
+
+        float testScale = Utilities.scale(testX, testVectorA, testVectorB);
+        float expectedScale = (testVectorB.y - testVectorB.x) * ((testX - testVectorA.x * testX) / (testVectorA.y * testX - testVectorA.x * testX)) + testVectorB.x;
+
+        // * and / sings have been flipped so the calculation should Fail
+        float shouldFail = (testVectorB.y - testVectorB.x) / ((testX - testVectorA.x * testX) * (testVectorA.y * testX - testVectorA.x * testX)) + testVectorB.x;
+
+        assertAll("Something has gone wrong calculating the Scale",
+                () -> assertEquals(testScale, expectedScale),
+                () -> assertNotEquals(testScale, shouldFail)
+        );
+    }
+
+    @Test
+    public void testRound(){
+        float x = randomFloat(1, 1000);
+        float y = randomFloat(1, 1000);
+
+        Vector2 testVector = new Vector2(x, y);
+        Vector2 testRound = Utilities.round(testVector);
+        Vector2 expectedRound = new Vector2(Math.round(testVector.x), Math.round(testVector.y));
+        Vector2 shouldFail = new Vector2(Math.round(testVector.y), Math.round(testVector.x));
+
+        assertAll("An error has occurred whilst rounding the Vector",
+                () -> assertEquals(testRound, expectedRound),
+                () -> assertNotEquals(testRound, shouldFail)
+        );
+    }
+
+    @Test
+    public void testRandomPos(){
+        float testMin = randomFloat(1, 1000);
+        float testMax = randomFloat(1, 1000);
+
+        Vector2 testVector = Utilities.randomPos(testMin, testMax);
+
+        Random random = new Random();
+
+        //test vector and expected vector should not be the same as random nums are generated.
+        Vector2 expectedVector = new Vector2(testMin + random.nextFloat() * (testMax - testMin), testMin + random.nextFloat() * (testMax - testMin));
+
+        assertAll("An error has occurred generating a random Vector",
+                () -> assertNotEquals(testVector, expectedVector)
+        );
+    }
+
+
+
 }
