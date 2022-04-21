@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.game.Entitys.Ship;
 import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
+import com.mygdx.game.Managers.PointsManager;
 import com.mygdx.utils.QueueFIFO;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class Pirate extends Component {
     private int ammo;
     private int attackDmg;
     private boolean damageReduce;
+
+    private static final int POINTS_VALUE = 10;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -122,8 +125,7 @@ public class Pirate extends Component {
                 health -= dmg;
             }
             if (health <= 0) {
-                health = 0;
-                isAlive = false;
+                kill();
             }
         }
 
@@ -203,6 +205,14 @@ public class Pirate extends Component {
     public void kill() {
         health = 0;
         isAlive = false;
+        onDeath();
+    }
+
+    /**
+     * Called when/if the pirate dies.
+     */
+    protected void onDeath() {
+        PointsManager.change(POINTS_VALUE);
     }
 
     public void setAmmo(int ammo) {
@@ -220,6 +230,4 @@ public class Pirate extends Component {
     public QueueFIFO<Ship> getTargets() {
         return targets;
     }
-
-
 }
