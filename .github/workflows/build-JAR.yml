@@ -6,6 +6,8 @@ name: Build & Release
 on:
   push:
     branches: main
+    tags:
+      - "v*.*.*"
 
 jobs:
   JAR:
@@ -21,3 +23,5 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: york-pirates.jar
+          generate_release_notes: true
+          
