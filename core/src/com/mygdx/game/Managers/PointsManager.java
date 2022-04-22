@@ -4,7 +4,7 @@ package com.mygdx.game.Managers;
  * Manages the assignment of points to the player.
  */
 public class PointsManager {
-    private static int points = 0;
+    protected static int points = 0;
 
     /**
      * Get the number of points the player has.
