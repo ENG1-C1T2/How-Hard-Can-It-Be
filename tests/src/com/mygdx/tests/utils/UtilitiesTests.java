@@ -255,6 +255,22 @@ public class UtilitiesTests{
         );
     }
 
+    @Test
+    public void testFloor(){
+        float x = randomFloat(1, 1000);
+        float y = randomFloat(1, 1000);
+
+        Vector2 testVector = new Vector2(x, y);
+        Vector2 testFloor = Utilities.floor(testVector);
+        Vector2 expectedVector = new Vector2(MathUtils.floor(testVector.x), MathUtils.floor(testVector.y));
+        Vector2 shouldFail = new Vector2(MathUtils.floor(testVector.y), MathUtils.floor(testVector.x));
+
+        assertAll("An error has occurred flooring the Vector",
+                () -> assertEquals(testFloor, expectedVector),
+                () -> assertNotEquals(testFloor, shouldFail)
+        );
+    }
+
 
 
 }
