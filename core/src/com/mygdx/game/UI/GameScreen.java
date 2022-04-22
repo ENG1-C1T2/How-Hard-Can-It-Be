@@ -95,6 +95,9 @@ public class GameScreen extends Page {
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
+        table.add(new Label("Pause:", parent.skin)).left();
+        table.add(new Image(parent.skin, "key-z"));
+        table.row();
         table.add(new Label("Quit:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-esc"));
 
@@ -173,6 +176,10 @@ public class GameScreen extends Page {
     protected void update() {
         super.update();
         Player p = GameManager.getPlayer();
+
+        if (p.getHealth() <= 0) {
+            parent.setScreen(parent.end);
+        }
 
         healthLabel.setText(String.valueOf(p.getHealth()));
         dosh.setText(String.valueOf(p.getPlunder()));

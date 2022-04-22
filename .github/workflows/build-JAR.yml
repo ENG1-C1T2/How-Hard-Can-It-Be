@@ -1,0 +1,28 @@
+# This is a workflow to build the JAR file and
+# publish it as a Github release.
+
+name: Build & Release
+
+on:
+  push:
+    branches: main
+    tags:
+      - "v*.*.*"
+
+jobs:
+  JAR:
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build
+        run: |
+          ./gradlew desktop:jar
+          mv desktop/build/libs/desktop-*.jar york-pirates.jar
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: york-pirates.jar
+          generate_release_notes: true
+          

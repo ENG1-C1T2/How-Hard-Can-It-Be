@@ -22,6 +22,7 @@ public class Pirate extends Component {
     private int ammo;
     private int attackDmg;
     private boolean damageReduce;
+    private boolean speedIncrease;
 
     private static final int POINTS_VALUE = 10;
 
@@ -70,6 +71,7 @@ public class Pirate extends Component {
         if (plunder >= 25) {
             plunder -= 25;
             GameManager.getPlayer().setSpeed(50000.0F);
+            speedIncrease = true;
         }
     }
 
@@ -80,7 +82,7 @@ public class Pirate extends Component {
         }
     }
 
-
+    public boolean[] getActiveUpgrades(){ return new boolean[] {speedIncrease, damageReduce}; }
 
     public void updateSettings (int difficulty) {
         if (difficulty == 0) {
@@ -170,6 +172,13 @@ public class Pirate extends Component {
             return dst < Ship.getAttackRange();
         }
         return false;
+    }
+
+    public Vector2 targetPosition() {
+        Ship p = (Ship) parent;
+        Vector2 pos = p.getPosition();
+        Vector2 targetPos = targets.peek().getPosition();
+        return targetPos.sub(pos);
     }
 
     /**
