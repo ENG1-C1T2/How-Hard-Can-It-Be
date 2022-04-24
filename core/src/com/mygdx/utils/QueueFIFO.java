@@ -23,19 +23,22 @@ public class QueueFIFO<T> implements Queue<T> {
         topIndex = -1;
         data = new ArrayList<>();
     }
-    //Implemented for Testing
-    public void set(ArrayList<T> setThis) {
-        data = setThis;
+
+    //Implemented to allow testing
+    public void set(ArrayList<T> set) {
+        data = set;
         topIndex = size() -1;
     }
 
     public ArrayList<T> get() {
-        return data; }
+        return data;
+    }
 
-    public int getI() {
+    public int getIndex() {
         return topIndex;
     }
-    //End of Testing Functions
+    //End
+
     @Override
     public int size() {
         return data.size();

@@ -8,8 +8,6 @@ import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.PointsManager;
 import com.mygdx.utils.QueueFIFO;
 
-import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Gives the concepts of health plunder, etc. Allows for firing of cannonballs, factions, death, targets
@@ -121,7 +119,7 @@ public class Pirate extends Component {
     }
 
     public void takeDamage(float dmg) {
-            if (damageReduce == true) {
+            if (damageReduce) {
                 health -= dmg/2;
             } else {
                 health -= dmg;
@@ -132,7 +130,7 @@ public class Pirate extends Component {
         }
 
     /**
-     * Will shoot a cannonball assigning this.parent as the cannonball's parent (must be Ship atm)
+     * Will shoot a cannonball assigning 'this.parent' as the cannonball's parent (must be Ship atm)
      *
      * @param dir the direction to shoot in
      */

@@ -1,6 +1,5 @@
 package com.mygdx.game.UI;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -9,8 +8,6 @@ import com.badlogic.gdx.scenes.scene2d.utils.ChangeListener;
 import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.game.Managers.ResourceManager;
 import com.mygdx.game.PirateGame;
-
-import java.awt.*;
 
 import static com.mygdx.utils.Constants.VIEWPORT_HEIGHT;
 

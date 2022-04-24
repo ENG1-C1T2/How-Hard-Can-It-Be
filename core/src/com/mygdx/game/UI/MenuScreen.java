@@ -44,7 +44,7 @@ public class MenuScreen extends Page {
         }
 
         t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg")));
-        Label l = new Label("Pirates the movie the game", parent.skin);
+        Label l = new Label("Team 2's York Pirates", parent.skin);
         l.setFontScale(2);
         t.add(l).top().spaceBottom(space * 0.5f);
         t.row();
@@ -61,7 +61,7 @@ public class MenuScreen extends Page {
         t.row();
 
         if(save_file){
-            TextButton load = new TextButton("Load game", parent.skin);
+            TextButton load = new TextButton("Load Game", parent.skin);
             load.addListener(new ChangeListener() {
                 @Override
                 public void changed(ChangeEvent event, Actor actor) {
@@ -97,8 +97,6 @@ public class MenuScreen extends Page {
 
         actors.add(t);
     }
-
-
 
     @Override
     public void show() {

@@ -31,12 +31,6 @@ public abstract class Page extends ScreenAdapter {
      */
     @Override
     public void show() {
-        // button.addListener(new ChangeListener() {
-        //     public void changed (ChangeEvent event, Actor actor) {
-        //         System.out.println("Clicked! Is checked: " + button.isChecked());
-        //         button.setText("Good job!");
-        //     }
-        // });
         super.show();
         Gdx.input.setInputProcessor(parent.stage);
         for (Actor a : actors) {

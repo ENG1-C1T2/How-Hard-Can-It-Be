@@ -84,11 +84,6 @@ public final class RenderingManager {
             }
         }
 
-        /*for(int i = 0; i < renderItems.size(); i++){
-            //renderItems.get(renderItems.size() - (1 + i)).render();
-            renderItems.get(i).render();
-        }*/
-
         batch.end();
     }
 
