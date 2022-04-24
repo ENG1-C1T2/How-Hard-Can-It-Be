@@ -1,6 +1,7 @@
 package com.mygdx.game.UI;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -34,6 +35,13 @@ public class MenuScreen extends Page {
         t.setFillParent(true);
 
         float space = VIEWPORT_HEIGHT * 0.25f;
+        Preferences prefs = Gdx.app.getPreferences("York-Pirates-2-save-data");
+        boolean save_file = false;
+
+        if(prefs.contains("save") && prefs.getBoolean("save")){
+            save_file = true;
+            space = space * 0.8f;
+        }
 
         t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg")));
         Label l = new Label("Pirates the movie the game", parent.skin);
@@ -51,6 +59,19 @@ public class MenuScreen extends Page {
         });
         t.add(play).top().size(100, 25).spaceBottom(space);
         t.row();
+
+        if(save_file){
+            TextButton load = new TextButton("Load game", parent.skin);
+            load.addListener(new ChangeListener() {
+                @Override
+                public void changed(ChangeEvent event, Actor actor) {
+                    GameManager.load();
+                    parent.setScreen(parent.game);
+                }
+            });
+            t.add(load).top().size(100, 25).spaceBottom(space);
+            t.row();
+        }
 
         TextButton difficulty = new TextButton("Difficulty", parent.skin);
         difficulty.addListener(new ChangeListener() {

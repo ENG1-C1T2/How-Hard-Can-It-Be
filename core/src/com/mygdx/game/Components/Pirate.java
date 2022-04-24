@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.game.Entitys.Ship;
 import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
+import com.mygdx.game.Managers.PointsManager;
 import com.mygdx.utils.QueueFIFO;
 
 import java.util.ArrayList;
@@ -21,6 +22,9 @@ public class Pirate extends Component {
     private int ammo;
     private int attackDmg;
     private boolean damageReduce;
+    private boolean speedIncrease;
+
+    private static final int POINTS_VALUE = 10;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -67,6 +71,7 @@ public class Pirate extends Component {
         if (plunder >= 25) {
             plunder -= 25;
             GameManager.getPlayer().setSpeed(50000.0F);
+            speedIncrease = true;
         }
     }
 
@@ -77,7 +82,7 @@ public class Pirate extends Component {
         }
     }
 
-
+    public boolean[] getActiveUpgrades(){ return new boolean[] {speedIncrease, damageReduce}; }
 
     public void updateSettings (int difficulty) {
         if (difficulty == 0) {
@@ -122,8 +127,7 @@ public class Pirate extends Component {
                 health -= dmg;
             }
             if (health <= 0) {
-                health = 0;
-                isAlive = false;
+                kill();
             }
         }
 
@@ -210,6 +214,14 @@ public class Pirate extends Component {
     public void kill() {
         health = 0;
         isAlive = false;
+        onDeath();
+    }
+
+    /**
+     * Called when/if the pirate dies.
+     */
+    protected void onDeath() {
+        PointsManager.change(POINTS_VALUE);
     }
 
     public void setAmmo(int ammo) {
@@ -227,6 +239,4 @@ public class Pirate extends Component {
     public QueueFIFO<Ship> getTargets() {
         return targets;
     }
-
-
 }

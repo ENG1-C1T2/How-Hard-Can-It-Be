@@ -17,9 +17,6 @@ public class AssetTests {
                 () -> assertTrue("This test will pass if default.fnt exists",
                         Gdx.files.internal("UISkin/default.fnt").exists()),
 
-                () -> assertTrue("This test will pass if default.png exists",
-                        Gdx.files.internal("UISkin/default.png").exists()),
-
                 () -> assertTrue("This test will pass if skin.atlas exists",
                         Gdx.files.internal("UISkin/skin.atlas").exists()),
 
@@ -27,7 +24,7 @@ public class AssetTests {
                         Gdx.files.internal("UISkin/skin.json").exists()),
 
                 () -> assertTrue("This test will pass if uiskin.png exists",
-                        Gdx.files.internal("UISkin/uiskin.png").exists())
+                        Gdx.files.internal("UISkin/skin.png").exists())
         );
     }
 

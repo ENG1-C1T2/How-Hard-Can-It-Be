@@ -1,6 +1,7 @@
 package com.mygdx.game.UI;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -41,13 +42,13 @@ public class PauseScreen extends Page {
         plunderLabel = new Label(String.valueOf(plunder), parent.skin);
         t2.add(plunderLabel).top().size(50);
 
-        float space = VIEWPORT_HEIGHT * 0.1f;
+        float space = VIEWPORT_HEIGHT * 0.08f;
 
 
         t.setBackground(new TextureRegionDrawable(ResourceManager.getTexture("menuBG.jpg")));
         Label l = new Label("Spend plunder on upgrades:", parent.skin);
         l.setFontScale(2);
-        t.add(l).top().spaceBottom(space * 0.5f);
+        t.add(l).top().spaceBottom(space * 0.4f);
         t.row();
 
         Label l3 = new Label("10 plunder:", parent.skin);
@@ -138,6 +139,18 @@ public class PauseScreen extends Page {
             }
         });
         t.add(cancel).size(200, 25).top().spaceBottom(space);
+        t.row();
+
+        TextButton saveQuit = new TextButton("Save & quit", parent.skin);
+        saveQuit.addListener(new ChangeListener() {
+            @Override
+            public void changed(ChangeEvent event, Actor actor) {
+                GameManager.save();
+                Gdx.app.exit();
+                System.exit(0);
+            }
+        });
+        t.add(saveQuit).size(200, 25).top().spaceBottom(space);
         t.row();
 
 
