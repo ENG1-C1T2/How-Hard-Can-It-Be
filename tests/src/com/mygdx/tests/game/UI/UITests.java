@@ -1,1 +1,0 @@
-//Can we just test if the files exist?
