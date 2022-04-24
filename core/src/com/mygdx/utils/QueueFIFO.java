@@ -8,22 +8,36 @@ import java.util.Iterator;
 import java.util.Queue;
 
 /**
- * A First in first out queue
+ * A First In First Out queue.
  *
  * @param <T> Data type to store
  */
 public class QueueFIFO<T> implements Queue<T> {
-    private final ArrayList<T> data;
+    private ArrayList<T> data;
     private int topIndex;
 
     /**
-     * Initialize all properties
+     * Initialise all properties.
      */
     public QueueFIFO() {
         topIndex = -1;
         data = new ArrayList<>();
     }
 
+    //Implemented to allow testing
+    public void set(ArrayList<T> set) {
+        data = set;
+        topIndex = size() -1;
+    }
+
+    public ArrayList<T> get() {
+        return data;
+    }
+
+    public int getIndex() {
+        return topIndex;
+    }
+    //End
 
     @Override
     public int size() {

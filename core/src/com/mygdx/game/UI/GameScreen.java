@@ -20,6 +20,7 @@ public class GameScreen extends Page {
     private Label healthLabel;
     private Label dosh;
     private Label ammo;
+    private Label points;
     private final Label questDesc;
     private final Label questName;
     /*private final Label questComplete;
@@ -88,11 +89,13 @@ public class GameScreen extends Page {
         table.add(new Image(parent.skin, "key-d"));
         table.row();
         table.add(new Label("Shoot With Cursor:", parent.skin)).left();
-        //table.add(new Image(parent.skin, "space"));
         table.add(new Image(parent.skin, "mouse"));
         table.row();
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
+        table.row();
+        table.add(new Label("Pause/Powerup Menu:", parent.skin)).left();
+        table.add(new Image(parent.skin, "key-z"));
         table.row();
         table.add(new Label("Quit:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-esc"));
@@ -102,7 +105,8 @@ public class GameScreen extends Page {
     private float accumulator;
 
     /**
-     * Called every frame calls all other functions that need to be called every frame by raising events and update methods
+     * Called every frame.
+     * Calls all other functions that need to be called every frame by raising events and update methods.
      *
      * @param delta delta time
      */
@@ -133,7 +137,7 @@ public class GameScreen extends Page {
     }
 
     /**
-     * disposed of all stuff it something is missing from this method you will get memory leaks
+     * Disposes of all stuff. If something is missing from this method you will get memory leaks.
      */
     @Override
     public void dispose() {
@@ -173,9 +177,14 @@ public class GameScreen extends Page {
         super.update();
         Player p = GameManager.getPlayer();
 
+        if (p.getHealth() <= 0) {
+            parent.setScreen(parent.end);
+        }
+
         healthLabel.setText(String.valueOf(p.getHealth()));
         dosh.setText(String.valueOf(p.getPlunder()));
         ammo.setText(String.valueOf(p.getAmmo()));
+        points.setText(String.valueOf(PointsManager.get()));
         if (!QuestManager.anyQuests()) {
             parent.end.win();
             parent.setScreen(parent.end);
@@ -202,7 +211,7 @@ public class GameScreen extends Page {
     }
 
     /**
-     * Draw UI elements showing player health, plunder, and ammo.
+     * Draw UI elements showing player health, plunder, ammo, and points.
      */
     @Override
     protected void CreateActors() {
@@ -226,6 +235,12 @@ public class GameScreen extends Page {
         table.add(new Image(parent.skin.getDrawable("ball"))).top().left().size(1.25f * TILE_SIZE);
         ammo = new Label("N/A", parent.skin);
         table.add(ammo).top().left().size(50);
+
+        table.row();
+
+        table.add(new Image(parent.skin.getDrawable("trophy"))).top().left().size(1.25f * TILE_SIZE);
+        points = new Label("N/A", parent.skin);
+        table.add(points).top().left().size(50);
 
         table.top().left();
     }

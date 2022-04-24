@@ -72,7 +72,7 @@ public class TileMap extends Component {
     }
 
     /**
-     * draws the first 2 layers
+     * Draws the first 2 layers.
      */
     @Override
     public void render() {

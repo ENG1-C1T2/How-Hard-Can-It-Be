@@ -15,7 +15,7 @@ import static com.mygdx.utils.Constants.*;
 
 public class DesktopLauncher {
     public static void main(String[] arg) {
-        // Hack around the -XstartOnFirstThread issue with Mac & libgdx
+        //Hack around the -XstartOnFirstThread issue with Mac & LibDDX
         if (restartJVM()) {
             return;
         }

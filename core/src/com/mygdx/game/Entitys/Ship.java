@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.mygdx.game.Components.*;
+import com.mygdx.game.Managers.CollisionManager;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
@@ -78,8 +79,12 @@ public class Ship extends Entity implements CollisionCallBack {
         setShipDirection("-up");
     }
 
+    public int getFaction () {
+        return getComponent(Pirate.class).getFaction().id;
+    }
+
     /**
-     * gets the string representation of the direction the ship is facing
+     * Gets the string representation of the direction the ship is facing.
      *
      * @param dir the vector dir the ship is facing
      * @return the string representation of the direction
@@ -93,7 +98,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * gets the faction colour
+     * Gets the faction colour.
      *
      * @return the faction colour
      */
@@ -102,7 +107,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
+     * Will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
      *
      * @param dir the dir to face (used to get the correct sprite from the texture atlas
      */
@@ -111,7 +116,7 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
+     * Will rotate the ship to face the direction (just changes the sprite doesn't actually rotate)
      *
      * @param direction the dir to face (used to get the correct sprite from the texture atlas
      */
@@ -152,6 +157,8 @@ public class Ship extends Entity implements CollisionCallBack {
         return getComponent(Transform.class).getPosition().cpy();
     }
 
+    public void setPosition(float x, float y) { getComponent(Transform.class).setPosition(x,y); }
+
     @Override
     public void BeginContact(CollisionInfo info) {
 
@@ -163,24 +170,39 @@ public class Ship extends Entity implements CollisionCallBack {
     }
 
     /**
-     * if called on a Player against anything else call it on the other thing
+     * If called on a Player against anything else, call it on the other thing.
      */
     @Override
     public void EnterTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).EnterTrigger(info);
-            //getComponent(Pirate.class).takeDamage(10f);
         }
+        if (info.a instanceof CannonBall && isAlive()) {
+            if (((CannonBall) info.a).getShooter().getFaction() != getFaction()) {
+                ((CannonBall) info.a).kill();
+                int health = getComponent(Pirate.class).getHealth();
+                getComponent(Pirate.class).setHealth(health - 10);
+            }
+        }
+        /*
+        //Take health when colliding with an obstacle
+        if (!(info.b instanceof WorldMap)) {
+            ((CollisionCallBack) info.b).EnterTrigger(info);
+            int health = getComponent(Pirate.class).getHealth();
+            getComponent(Pirate.class).setHealth(health - 10);
+            //getComponent(Pirate.class).takeDamage(10f);
+         }
+         */
     }
 
     /**
-     * if called on a Player against anything else call it on the other thing
+     * If called on a Player against anything else, call it on the other .
      */
     @Override
     public void ExitTrigger(CollisionInfo info) {
         if (this instanceof Player && !(info.b instanceof Player)) {
             ((CollisionCallBack) info.b).ExitTrigger(info);
-            getComponent(Pirate.class).takeDamage(10f);
         }
     }
 }
+

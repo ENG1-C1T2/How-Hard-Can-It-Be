@@ -1,12 +1,12 @@
-package com.mygdx.tests;
+package com.mygdx.tests.assets;
 
 import com.badlogic.gdx.Gdx;
+import com.mygdx.tests.GdxTestRunner;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertAll;
-
 
 @RunWith(GdxTestRunner.class)
 public class AssetTests {
@@ -17,9 +17,6 @@ public class AssetTests {
                 () -> assertTrue("This test will pass if default.fnt exists",
                         Gdx.files.internal("UISkin/default.fnt").exists()),
 
-                () -> assertTrue("This test will pass if default.png exists",
-                        Gdx.files.internal("UISkin/default.png").exists()),
-
                 () -> assertTrue("This test will pass if skin.atlas exists",
                         Gdx.files.internal("UISkin/skin.atlas").exists()),
 
@@ -27,14 +24,14 @@ public class AssetTests {
                         Gdx.files.internal("UISkin/skin.json").exists()),
 
                 () -> assertTrue("This test will pass if uiskin.png exists",
-                        Gdx.files.internal("UISkin/uiskin.png").exists())
+                        Gdx.files.internal("UISkin/skin.png").exists())
         );
     }
 
 
     @Test
     public void testBeachTilesetPNGExists(){
-        assertTrue("This test will only pass if the Beach Tileset asset exists",
+        assertTrue("This test will  pass if the Beach Tileset asset exists",
                 Gdx.files.internal("Beach Tileset.png").exists());
     }
 

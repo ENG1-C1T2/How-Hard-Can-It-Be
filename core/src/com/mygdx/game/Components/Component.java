@@ -34,7 +34,7 @@ public abstract class Component {
     /**
      * Sets the required components
      *
-     * @param reqs take a guess
+     * @param reqs the requirements
      */
     public final void setRequirements(ComponentType... reqs) {
         requirements.addAll(Arrays.asList(reqs));

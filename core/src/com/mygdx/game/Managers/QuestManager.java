@@ -61,7 +61,7 @@ public class QuestManager {
         for (float f : GameManager.getSettings().get("quests").get("locations").asFloatArray()) {
             locations.add(f);
         }
-        // in game settings the positions are stored as ints with y following x it doesnt wrap
+        // in game settings the positions are stored as ints with y following x it doesn't wrap
         // eg. a, b, c, d
         // v1: (a, b) v2: (c, d)
         int choice = -1;

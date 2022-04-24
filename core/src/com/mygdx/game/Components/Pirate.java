@@ -5,10 +5,9 @@ import com.badlogic.gdx.utils.JsonValue;
 import com.mygdx.game.Entitys.Ship;
 import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
+import com.mygdx.game.Managers.PointsManager;
 import com.mygdx.utils.QueueFIFO;
 
-import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * Gives the concepts of health plunder, etc. Allows for firing of cannonballs, factions, death, targets
@@ -21,6 +20,9 @@ public class Pirate extends Component {
     private int ammo;
     private int attackDmg;
     private boolean damageReduce;
+    private boolean speedIncrease;
+
+    private static final int POINTS_VALUE = 10;
 
     /**
      * The enemy that is being targeted by the AI.
@@ -67,6 +69,7 @@ public class Pirate extends Component {
         if (plunder >= 25) {
             plunder -= 25;
             GameManager.getPlayer().setSpeed(50000.0F);
+            speedIncrease = true;
         }
     }
 
@@ -77,7 +80,7 @@ public class Pirate extends Component {
         }
     }
 
-
+    public boolean[] getActiveUpgrades(){ return new boolean[] {speedIncrease, damageReduce}; }
 
     public void updateSettings (int difficulty) {
         if (difficulty == 0) {
@@ -116,19 +119,18 @@ public class Pirate extends Component {
     }
 
     public void takeDamage(float dmg) {
-            if (damageReduce == true) {
+            if (damageReduce) {
                 health -= dmg/2;
             } else {
                 health -= dmg;
             }
             if (health <= 0) {
-                health = 0;
-                isAlive = false;
+                kill();
             }
         }
 
     /**
-     * Will shoot a cannonball assigning this.parent as the cannonball's parent (must be Ship atm)
+     * Will shoot a cannonball assigning 'this.parent' as the cannonball's parent (must be Ship atm)
      *
      * @param dir the direction to shoot in
      */
@@ -170,6 +172,13 @@ public class Pirate extends Component {
         return false;
     }
 
+    public Vector2 targetPosition() {
+        Ship p = (Ship) parent;
+        Vector2 pos = p.getPosition();
+        Vector2 targetPos = targets.peek().getPosition();
+        return targetPos.sub(pos);
+    }
+
     /**
      * if dst to target is >= attack range
      * target will be null if not in agro range
@@ -203,6 +212,14 @@ public class Pirate extends Component {
     public void kill() {
         health = 0;
         isAlive = false;
+        onDeath();
+    }
+
+    /**
+     * Called when/if the pirate dies.
+     */
+    protected void onDeath() {
+        PointsManager.change(POINTS_VALUE);
     }
 
     public void setAmmo(int ammo) {
@@ -220,6 +237,4 @@ public class Pirate extends Component {
     public QueueFIFO<Ship> getTargets() {
         return targets;
     }
-
-
 }

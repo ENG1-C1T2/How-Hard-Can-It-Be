@@ -1,6 +1,5 @@
 package com.mygdx.game.UI;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -10,11 +9,13 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.mygdx.game.Managers.ResourceManager;
 import com.mygdx.game.PirateGame;
 
-import java.awt.*;
-
 import static com.mygdx.utils.Constants.VIEWPORT_HEIGHT;
 
-
+/**
+ * Added for assessment 2
+ * You are presented with 3 difficulties; easy, medium and hard.
+ * The default is medium.
+ */
 public class DifficultyScreen extends Page {
     public DifficultyScreen(PirateGame parent) {super(parent);}
 
@@ -25,7 +26,7 @@ public class DifficultyScreen extends Page {
 
         float space = VIEWPORT_HEIGHT * 0.25f;
 
-        Label l = new Label("Select difficulty:", parent.skin);
+        Label l = new Label("Select Difficulty:", parent.skin);
         l.setFontScale(2);
         t.add(l).top().spaceBottom(space * 0.5f);
         t.row();
