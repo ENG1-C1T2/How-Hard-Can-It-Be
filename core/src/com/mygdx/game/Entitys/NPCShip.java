@@ -85,14 +85,15 @@ public class NPCShip extends Ship implements CollisionCallBack {
         // System.out.println(getComponent(Pirate.class).targetCount());
     }
 
-    /**
+    /*
      * is meant to path find to the target but didn't work
-     */
+
     public void goToTarget() {
         /*path = GameManager.getPath(
                 Utilities.distanceToTiles(getPosition()),
-                Utilities.distanceToTiles(getTarget().getPosition()));*/
+                Utilities.distanceToTiles(getTarget().getPosition()));
     }
+    */
 
     /**
      * creates a new steering behaviour that will make the NPC beeline for the target doesn't factor in obstetrical

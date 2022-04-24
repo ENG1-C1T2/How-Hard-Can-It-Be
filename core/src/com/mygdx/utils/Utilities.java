@@ -110,7 +110,7 @@ public final class Utilities {
     }
 
     /**
-     * helper for System.out.print
+     * Helper for System.out.print
      *
      * @param v   string
      * @param eol eol msg

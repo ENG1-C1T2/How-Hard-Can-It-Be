@@ -18,7 +18,8 @@ import com.mygdx.game.Components.Pirate;
 import java.util.ArrayList;
 
 /**
- * Responsible for creating most entity's associated with the game. Also the cached chest and cannonballs
+ * Responsible for creating most entity's associated with the game.
+ * Also, the cached chest and cannonballs.
  */
 public final class GameManager {
     private static boolean initialized = false;
@@ -255,11 +256,11 @@ public final class GameManager {
     }
 
     /**
-     * uses a* not sure if it works but i think it does
-     *
+     * Uses a* not sure if it works, but I think it does.
+     * Assessment 1 commenter
      * @param loc src
      * @param dst dst
-     * @return queue of delta postions
+     * @return queue of delta positions
      */
     public static QueueFIFO<Vector2> getPath(Vector2 loc, Vector2 dst) {
         return mapGraph.findOptimisedPath(loc, dst);

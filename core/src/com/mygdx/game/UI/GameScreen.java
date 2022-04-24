@@ -89,16 +89,12 @@ public class GameScreen extends Page {
         table.add(new Image(parent.skin, "key-d"));
         table.row();
         table.add(new Label("Shoot With Cursor:", parent.skin)).left();
-        //table.add(new Image(parent.skin, "space"));
         table.add(new Image(parent.skin, "mouse"));
         table.row();
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
-        table.add(new Label("Powerups: Press Z", parent.skin)).left();
-        //table.add(new Image(parent.skin, "key-z"));
-        table.row();
-        table.add(new Label("Pause:", parent.skin)).left();
+        table.add(new Label("Pause/Powerup Menu:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-z"));
         table.row();
         table.add(new Label("Quit:", parent.skin)).left();
@@ -109,7 +105,8 @@ public class GameScreen extends Page {
     private float accumulator;
 
     /**
-     * Called every frame calls all other functions that need to be called every frame by raising events and update methods
+     * Called every frame.
+     * Calls all other functions that need to be called every frame by raising events and update methods.
      *
      * @param delta delta time
      */

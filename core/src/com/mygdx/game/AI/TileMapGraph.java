@@ -217,7 +217,7 @@ public class TileMapGraph implements IndexedGraph<Node> {
         for (int i = 1; i < path.getCount(); i++) {
             Node n = path.get(i);
             cur.set(n.getPosition());
-            // d contains the current vector between the current pos an prev
+            //d contains the current vector between the current pos and prev
             Vector2 d = cur.cpy();
             d.sub(prev);
 
@@ -249,7 +249,7 @@ public class TileMapGraph implements IndexedGraph<Node> {
         return findOptimisedPath(n1, n2);
     }
 
-    /**
+    /*
      * Finds a sequence on locations which can be travelled to without collision
      *
      * @param x1 starting node x co-ords tile space
@@ -257,12 +257,15 @@ public class TileMapGraph implements IndexedGraph<Node> {
      * @param x2 destination node x co-ords tile space
      * @param y2 destination node y co-ords tile space
      * @return queue of location to travel to in order
-     */
+
+
+
     public QueueFIFO<Vector2> findOptimisedPath(float x1, float y1, float x2, float y2) {
         Node a = getNode(x1, y1);
         Node b = getNode(x2, y2);
         return findOptimisedPath(a, b);
     }
+    */
 
 
     // The Interface
