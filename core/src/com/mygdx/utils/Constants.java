@@ -22,7 +22,7 @@ public final class Constants {
             SCREEN_WIDTH = 1920;
             SCREEN_HEIGHT = 1080;
         }
-        ASPECT_RATIO = !FULLSCREEN ? 1.0f / 1.0f : (float) SCREEN_WIDTH / (float) SCREEN_HEIGHT;
+        ASPECT_RATIO = !FULLSCREEN ? 1.0f : (float) SCREEN_WIDTH / (float) SCREEN_HEIGHT;
         VIEWPORT_HEIGHT = !FULLSCREEN ? 800 : SCREEN_HEIGHT;
         VIEWPORT_WIDTH = !FULLSCREEN ? (int) (ASPECT_RATIO * VIEWPORT_HEIGHT) : SCREEN_WIDTH;
         HALF_VIEWPORT_HEIGHT = VIEWPORT_WIDTH / 2;
@@ -70,7 +70,7 @@ public final class Constants {
     public static final boolean VSYNC = true;
     public static final float BUILDING_SCALE = 1.5f;
 
-    public static float TILE_SIZE;
+    public static float TILE_SIZE = 32;
 
     public static Vector3 BACKGROUND_COLOUR;
 
