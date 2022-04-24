@@ -89,13 +89,12 @@ public final class Utilities {
     /**
      * Chooses a random element
      *
-     * @param list   source
-     * @param choice the index of the chosen element
      * @param <T>    type of element to return
+     * @param list   source
      * @return the random element
      */
-    public static <T> T randomChoice(ArrayList<T> list, Integer choice) {
-        choice = new Random().nextInt(list.size());
+    public static <T> T randomChoice(ArrayList<T> list) {
+        int choice = new Random().nextInt(list.size());
         return list.get(choice);
     }
 
@@ -109,26 +108,6 @@ public final class Utilities {
         return new Vector2(MathUtils.floor(a.x), MathUtils.floor(a.y));
     }
 
-    /**
-     * helper for System.out.print
-     *
-     * @param v   string
-     * @param eol eol msg
-     */
-    public static void print(String v, String eol) {
-        System.out.print(v + eol);
-    }
-
-
-    /**
-     * helper for System.out.println
-     *
-     * @param v string
-     */
-    public static void print(String v) {
-
-        System.out.println(v);
-    }
 
     /**
      * does array contain a

@@ -8,6 +8,7 @@ import com.mygdx.utils.Utilities;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import static com.mygdx.utils.Constants.TILE_SIZE;
@@ -18,15 +19,15 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UtilitiesTests{
 
     //to generate random floats for the Vector2 objects
-    private float randomFloat(int min, int max){
+    private float randomFloat(int max){
         Random r = new Random();
-        return min + r.nextFloat() * (max - min);
+        return 1 + r.nextFloat() * (max - 1);
     }
 
     @Test
     public void testVectorToAngle(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
         Vector2 testVector = new Vector2(x, y);
         float testAngle = Utilities.vectorToAngle(testVector);
@@ -44,10 +45,10 @@ public class UtilitiesTests{
 
     @Test
     public void testAngleToVector(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
-        float testAngle = randomFloat(1, 360);
+        float testAngle = randomFloat(360);
         Vector2 out = new Vector2();
         Vector2 testVector = Utilities.angleToVector(out, testAngle);
 
@@ -75,7 +76,7 @@ public class UtilitiesTests{
 
     @Test
     public void testTilesToDistanceFloat(){
-        float testTiles = randomFloat(1, 1000);
+        float testTiles = randomFloat(1000);
 
         float testDistance = Utilities.tilesToDistance(testTiles);
         float expectedDistance = Constants.TILE_SIZE * testTiles;
@@ -89,8 +90,8 @@ public class UtilitiesTests{
 
     @Test
     public void testTilesToDistanceVector(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
         Vector2 testVector = new Vector2(x, y);
         Vector2 testDistance = Utilities.tilesToDistance(testVector);
@@ -106,7 +107,7 @@ public class UtilitiesTests{
 
     @Test
     public void testDistanceToTilesFloat(){
-        float testDistance = randomFloat(1, 1000);
+        float testDistance = randomFloat(1000);
 
         float testTiles = Utilities.distanceToTiles(testDistance);
         float expectedTiles = (int) (testDistance/TILE_SIZE);
@@ -120,8 +121,8 @@ public class UtilitiesTests{
 
     @Test
     public void testDistanceToTilesVector(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
         Vector2 testDistance = new Vector2(x, y);
         Vector2 testTiles = Utilities.distanceToTiles(testDistance);
@@ -136,14 +137,14 @@ public class UtilitiesTests{
 
     @Test
     public void testCheckProximity(){
-        float a = randomFloat(1, 1000);
-        float b = randomFloat(1, 1000);
-        float c = randomFloat(1, 1000);
-        float d = randomFloat(1, 1000);
+        float a = randomFloat(1000);
+        float b = randomFloat(1000);
+        float c = randomFloat(1000);
+        float d = randomFloat(1000);
 
         Vector2 testVectorA = new Vector2(a, b);
         Vector2 testVectorB = new Vector2(c, d);
-        float testRadius = randomFloat(1, 1000);
+        float testRadius = randomFloat(1000);
 
         boolean testCheckProximity = Utilities.checkProximity(testVectorA, testVectorB, testRadius);
         boolean expectedCheckProximity = (Math.abs(testVectorA.dst2(testVectorB)) < (testRadius*testRadius));
@@ -157,10 +158,10 @@ public class UtilitiesTests{
 
     @Test
     public void testAngleBetween(){
-        float a = randomFloat(1, 1000);
-        float b = randomFloat(1, 1000);
-        float c = randomFloat(1, 1000);
-        float d = randomFloat(1, 1000);
+        float a = randomFloat(1000);
+        float b = randomFloat(1000);
+        float c = randomFloat(1000);
+        float d = randomFloat(1000);
 
         Vector2 testVectorV = new Vector2(a, b);
         Vector2 testVectorW = new Vector2(c, d);
@@ -181,11 +182,11 @@ public class UtilitiesTests{
 
     @Test
     public void testScaleFloat(){
-        float testX = randomFloat(1, 1000);
-        float testMin0 = randomFloat(1, 1000);
-        float testMax0 = randomFloat(1, 1000);
-        float testMin1 = randomFloat(1, 1000);
-        float testMax1 = randomFloat(1, 1000);
+        float testX = randomFloat(1000);
+        float testMin0 = randomFloat(1000);
+        float testMax0 = randomFloat(1000);
+        float testMin1 = randomFloat(1000);
+        float testMax1 = randomFloat(1000);
 
         float testScale = Utilities.scale(testX, testMin0, testMax0, testMin1, testMax1);
         float expectedScale = (testMax1 - testMin1) * ((testX - testMin0 * testX) / (testMax0 * testX - testMin0 * testX)) + testMin1;
@@ -201,11 +202,11 @@ public class UtilitiesTests{
 
     @Test
     public void testScaleVector(){
-        float testX = randomFloat(1, 1000);
-        float a = randomFloat(1, 1000);
-        float b = randomFloat(1, 1000);
-        float c = randomFloat(1, 1000);
-        float d = randomFloat(1, 1000);
+        float testX = randomFloat(1000);
+        float a = randomFloat(1000);
+        float b = randomFloat(1000);
+        float c = randomFloat(1000);
+        float d = randomFloat(1000);
 
         Vector2 testVectorA = new Vector2(a, b);
         Vector2 testVectorB = new Vector2(c, d);
@@ -224,8 +225,8 @@ public class UtilitiesTests{
 
     @Test
     public void testRound(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
         Vector2 testVector = new Vector2(x, y);
         Vector2 testRound = Utilities.round(testVector);
@@ -240,8 +241,8 @@ public class UtilitiesTests{
 
     @Test
     public void testRandomPos(){
-        float testMin = randomFloat(1, 1000);
-        float testMax = randomFloat(1, 1000);
+        float testMin = randomFloat(1000);
+        float testMax = randomFloat(1000);
 
         Vector2 testVector = Utilities.randomPos(testMin, testMax);
 
@@ -257,8 +258,8 @@ public class UtilitiesTests{
 
     @Test
     public void testFloor(){
-        float x = randomFloat(1, 1000);
-        float y = randomFloat(1, 1000);
+        float x = randomFloat(1000);
+        float y = randomFloat(1000);
 
         Vector2 testVector = new Vector2(x, y);
         Vector2 testFloor = Utilities.floor(testVector);
@@ -271,6 +272,45 @@ public class UtilitiesTests{
         );
     }
 
+    @Test
+    public void testContains(){
+        ArrayList<Integer> testArrayList = new ArrayList<>(3);
+
+        testArrayList.add(1);
+        testArrayList.add(5);
+        testArrayList.add(9);
+
+        boolean expectedValue1 = Utilities.contains(testArrayList, 5);
+        boolean expectedValue2 = Utilities.contains(testArrayList, 9);
+        boolean expectedValue3 = Utilities.contains(testArrayList, 1);
+        boolean shouldFail = Utilities.contains(testArrayList, 0);
+
+        assertAll("The Contains function has failed",
+                () -> assertTrue(expectedValue1),
+                () -> assertTrue(expectedValue2),
+                () -> assertTrue(expectedValue3),
+                () -> assertFalse(shouldFail)
+        );
+
+    }
+
+    @Test
+    public void testRandomChoice(){
+        ArrayList<Integer> testArrayList = new ArrayList<>(3);
+
+        testArrayList.add(1);
+        testArrayList.add(2);
+        testArrayList.add(3);
+
+        Integer choice = 1;
+        int testRandomChoice = Utilities.randomChoice(testArrayList);
+
+        assertAll("The random choice function has failed",
+                () -> assertNotEquals(0, testRandomChoice),
+                () -> assertNotEquals(4, testRandomChoice),
+                () -> assertNotEquals(5, testRandomChoice)
+        );
+    }
 
 
 }
