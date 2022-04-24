@@ -50,7 +50,7 @@ public class PirateGame extends Game {
     }
 
     /**
-     * Clean up prevent memory leeks
+     * Clean up to prevent memory leaks.
      */
     @Override
     public void dispose() {
@@ -63,7 +63,7 @@ public class PirateGame extends Game {
     }
 
     /**
-     * Load ui skin from assets
+     * Load ui skin from assets.
      */
     private void createSkin() {
         skin = new Skin(Gdx.files.internal("UISkin/skin.json"));

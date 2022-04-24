@@ -277,7 +277,7 @@ public final class ResourceManager {
     }
 
     /**
-     * It is imperative that this is called unless you want memory leeks
+     * It is imperative that this is called unless you want memory leaks.
      */
     public static void cleanUp() {
         tryInit();
@@ -294,7 +294,7 @@ public final class ResourceManager {
     }
 
     /**
-     * Will check if new assets can be added if not throw an error
+     * Will check if new assets can be added. If not, throw an error.
      */
     private static void checkAdd() {
         if (loaded) {
@@ -303,7 +303,7 @@ public final class ResourceManager {
     }
 
     /**
-     * Calls Initialize if not already done so
+     * Calls Initialise if not already done so
      */
     private static void tryInit() {
         if (!initialized) {

@@ -95,6 +95,9 @@ public class GameScreen extends Page {
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
+        table.add(new Label("Powerups: Press Z", parent.skin)).left();
+        //table.add(new Image(parent.skin, "key-z"));
+        table.row();
         table.add(new Label("Pause:", parent.skin)).left();
         table.add(new Image(parent.skin, "key-z"));
         table.row();
@@ -137,7 +140,7 @@ public class GameScreen extends Page {
     }
 
     /**
-     * disposed of all stuff it something is missing from this method you will get memory leaks
+     * Disposes of all stuff. If something is missing from this method you will get memory leaks.
      */
     @Override
     public void dispose() {

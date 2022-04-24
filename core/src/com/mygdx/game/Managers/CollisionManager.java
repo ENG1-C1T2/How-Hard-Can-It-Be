@@ -19,7 +19,7 @@ public class CollisionManager implements ContactListener {
     }
 
     /**
-     * called for every contact that box2d detects prior to collision restitution (doesn't matter if it is a trigger/sensor)
+     * Called for every contact that box2d detects prior to collision restitution (doesn't matter if it is a trigger/sensor)
      *
      * @param contact the contact data
      */
