@@ -22,8 +22,9 @@ public class QueueFIFOTests {
         QueueFIFO<Object> emptyQueue = new QueueFIFO<>();
         emptyQueue.set(new ArrayList<>());
 
-        assertAll(() -> assertEquals(queue.size(), 5, "Fail: Size of Queue Is Wrong"),
-                () -> assertEquals(emptyQueue.size(), 0, "Fail: Size of Empty Queue Is Wrong"));
+        assertAll(
+                () -> assertEquals(queue.size(), 5),
+                () -> assertEquals(emptyQueue.size(), 0));
     }
 
     @Test
@@ -31,12 +32,20 @@ public class QueueFIFOTests {
         QueueFIFO<Object> emptyQueue = new QueueFIFO<>();
         emptyQueue.set(new ArrayList<>());
 
-        assertAll(() -> assertTrue(emptyQueue.isEmpty()));
+        assertAll(
+                () -> assertTrue(emptyQueue.isEmpty()));
     }
 
     @Test
     public void contains() {
+        QueueFIFO<Object> queue = new QueueFIFO<>();
+        queue.set(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)));
 
+        assertAll(
+                () -> assertTrue(queue.contains(3)),
+                () -> assertTrue(queue.contains(5)),
+                () -> assertFalse(queue.contains(6))
+        );
     }
 
     @Test
@@ -60,7 +69,7 @@ public class QueueFIFOTests {
     }
 
     @Test
-    public void containtsAll() {
+    public void containsAll() {
 
     }
 

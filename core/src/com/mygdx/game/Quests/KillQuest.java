@@ -5,7 +5,7 @@ import com.mygdx.game.Entitys.Entity;
 import com.mygdx.game.Entitys.Player;
 
 /**
- * A Quest to kill a college is only complete once that college is dead
+ * A Quest to destroy a college is only complete once that college is destroyed
  */
 public class KillQuest extends Quest {
     private Pirate target;
