@@ -17,6 +17,10 @@ import com.mygdx.game.PirateGame;
 import static com.mygdx.utils.Constants.TILE_SIZE;
 import static com.mygdx.utils.Constants.VIEWPORT_HEIGHT;
 
+/**
+ * Added for assessment 2.
+ * Provides a menu, accessed by pressing Z, where the player may spend plunder on powerups
+ */
 public class PauseScreen extends Page {
     private Label plunderLabel;
 
@@ -25,7 +29,7 @@ public class PauseScreen extends Page {
     }
 
     /**
-     * Create menu widgets such as start button, labels, etc.
+     * Create menu widgets such as buttons, labels, etc.
      */
     @Override
     protected void CreateActors() {
@@ -51,7 +55,7 @@ public class PauseScreen extends Page {
         t.add(l).top().spaceBottom(space * 0.4f);
         t.row();
 
-        Label l3 = new Label("10 plunder:", parent.skin);
+        Label l3 = new Label("50 plunder:", parent.skin);
         l3.setFontScale(1);
         t.add(l3).top().spaceBottom(space * 0.1f);
         t.row();
@@ -67,7 +71,7 @@ public class PauseScreen extends Page {
         t.add(health).top().size(150, 25).spaceBottom(space);
         t.row();
 
-        Label l2 = new Label("20 plunder:", parent.skin);
+        Label l2 = new Label("50 plunder:", parent.skin);
         l2.setFontScale(1);
         t.add(l2).top().spaceBottom(space * 0.1f);
         t.row();
@@ -83,7 +87,7 @@ public class PauseScreen extends Page {
         t.add(ammo).size(150, 25).top().spaceBottom(space);
         t.row();
 
-        Label l4 = new Label("15 plunder:", parent.skin);
+        Label l4 = new Label("100 plunder:", parent.skin);
         l4.setFontScale(1);
         t.add(l4).top().spaceBottom(space * 0.1f);
         t.row();
@@ -99,7 +103,7 @@ public class PauseScreen extends Page {
         t.add(damage).size(200, 25).top().spaceBottom(space);
         t.row();
 
-        Label l5 = new Label("25 plunder:", parent.skin);
+        Label l5 = new Label("200 plunder:", parent.skin);
         l5.setFontScale(1);
         t.add(l5).top().spaceBottom(space * 0.1f);
         t.row();
@@ -115,7 +119,7 @@ public class PauseScreen extends Page {
         t.add(speed).size(200, 25).top().spaceBottom(space);
         t.row();
 
-        Label l6 = new Label("30 plunder:", parent.skin);
+        Label l6 = new Label("200 plunder:", parent.skin);
         l6.setFontScale(1);
         t.add(l6).top().spaceBottom(space * 0.1f);
         t.row();
