@@ -181,7 +181,7 @@ public class Ship extends Entity implements CollisionCallBack {
             if (((CannonBall) info.a).getShooter().getFaction() != getFaction()) {
                 ((CannonBall) info.a).kill();
                 int health = getComponent(Pirate.class).getHealth();
-                getComponent(Pirate.class).setHealth(health - 10);
+                getComponent(Pirate.class).takeDamage(10);
             }
         }
         /*

@@ -44,38 +44,54 @@ public class Pirate extends Component {
     }
 
     //manage power ups:
+
+    /**
+     * Applies a powerup to increase the player's health by 20
+     */
     public void healthUpgrade() {
-        if (plunder >= 10) {
-            plunder -= 10;
+        if (plunder >= 50) {
+            plunder -= 50;
             health += 20;
         }
     }
 
+    /**
+     * Applies a powerup to increase the player's ammo by 5
+     */
     public void ammoUpgrade() {
-        if (plunder >= 20) {
-            plunder -= 20;
+        if (plunder >= 50) {
+            plunder -= 50;
             ammo += 5;
         }
     }
 
+    /**
+     * Applies a powerup to increase the damage done against enemy ships
+     */
     public void damageUpgrade() {
-        if (plunder >= 15) {
-            plunder -= 15;
+        if (plunder >= 100) {
+            plunder -= 100;
             attackDmg += 10;
         }
     }
 
+    /**
+     * Applies a powerup to increase the player ship's speed
+     */
     public void speedUpgrade() {
-        if (plunder >= 25) {
-            plunder -= 25;
+        if (plunder >= 200) {
+            plunder -= 200;
             GameManager.getPlayer().setSpeed(50000.0F);
             speedIncrease = true;
         }
     }
 
+    /**
+     * Applies a powerup to reduce the damage taken by the player when fired at by enemy ships
+     */
     public void reduceDamage() {
-        if (plunder >= 30) {
-            plunder -= 30;
+        if (plunder >= 200) {
+            plunder -= 200;
             damageReduce = true;
         }
     }
