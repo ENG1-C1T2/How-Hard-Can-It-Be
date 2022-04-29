@@ -92,15 +92,15 @@ public class PauseScreen extends Page {
         t.add(l4).top().spaceBottom(space * 0.1f);
         t.row();
 
-        TextButton damage = new TextButton("Increase attack damage", parent.skin);
-        damage.addListener(new ChangeListener() {
+        TextButton multiShoot = new TextButton("Shoot multiple cannonballs", parent.skin);
+        multiShoot.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
-                pirate.damageUpgrade();
+                pirate.multiShootUpgrade();
                 parent.setScreen(parent.game);
             }
         });
-        t.add(damage).size(200, 25).top().spaceBottom(space);
+        t.add(multiShoot).size(220, 25).top().spaceBottom(space);
         t.row();
 
         Label l5 = new Label("200 plunder:", parent.skin);
@@ -124,15 +124,15 @@ public class PauseScreen extends Page {
         t.add(l6).top().spaceBottom(space * 0.1f);
         t.row();
 
-        TextButton points = new TextButton("Reduce damage taken", parent.skin);
-        points.addListener(new ChangeListener() {
+        TextButton damageReduce = new TextButton("Reduce damage taken", parent.skin);
+        damageReduce.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
                 pirate.reduceDamage();
                 parent.setScreen(parent.game);
             }
         });
-        t.add(points).size(200, 25).top().spaceBottom(space);
+        t.add(damageReduce).size(200, 25).top().spaceBottom(space);
         t.row();
 
         TextButton cancel = new TextButton("Cancel", parent.skin);

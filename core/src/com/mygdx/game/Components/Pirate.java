@@ -21,6 +21,7 @@ public class Pirate extends Component {
     private int attackDmg;
     private boolean damageReduce;
     private boolean speedIncrease;
+    private boolean multiShoot;
 
     private static final int POINTS_VALUE = 10;
 
@@ -41,6 +42,7 @@ public class Pirate extends Component {
         attackDmg = starting.getInt("damage");
         ammo = starting.getInt("ammo");
         damageReduce = false;
+        multiShoot = false;
     }
 
     //manage power ups:
@@ -66,12 +68,12 @@ public class Pirate extends Component {
     }
 
     /**
-     * Applies a powerup to increase the damage done against enemy ships
+     * Applies a powerup to shoot three cannonballs at once
      */
-    public void damageUpgrade() {
+    public void multiShootUpgrade() {
         if (plunder >= 100) {
             plunder -= 100;
-            attackDmg += 10;
+            multiShoot = true;
         }
     }
 
@@ -156,6 +158,13 @@ public class Pirate extends Component {
         }
         ammo--;
         GameManager.shoot((Ship) parent, dir);
+
+        if (multiShoot == true) {
+            Vector2 vec = new Vector2(1, 0);
+            Vector2 vec2 = new Vector2(0, 1);
+            GameManager.shoot((Ship) parent, (dir.add(vec)));
+            GameManager.shoot((Ship) parent, (dir.add(vec2)));
+        }
     }
 
     /**
