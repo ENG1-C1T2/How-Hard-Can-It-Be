@@ -68,7 +68,7 @@ public class Pirate extends Component {
     }
 
     /**
-     * Applies a powerup to increase the damage done against enemy ships
+     * Applies a powerup to shoot three cannonballs at once
      */
     public void multiShootUpgrade() {
         if (plunder >= 100) {
