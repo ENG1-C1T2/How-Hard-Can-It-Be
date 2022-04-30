@@ -103,20 +103,12 @@ public class Renderable extends Component {
         a.setV2(s.getV2());
     }
 
-    public boolean isVisible() {
-        return isVisible;
-    }
-
     public void show() {
         isVisible = true;
     }
 
     public void hide() {
         isVisible = false;
-    }
-
-    public void toggleVisibility() {
-        isVisible = !isVisible;
     }
 
 }

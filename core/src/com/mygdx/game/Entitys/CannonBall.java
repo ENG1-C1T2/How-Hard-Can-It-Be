@@ -4,14 +4,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.Components.Renderable;
 import com.mygdx.game.Components.RigidBody;
 import com.mygdx.game.Components.Transform;
-import com.mygdx.game.Managers.EntityManager;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Physics.CollisionCallBack;
 import com.mygdx.game.Physics.CollisionInfo;
 import com.mygdx.game.Physics.PhysicsBodyType;
-
-import static com.mygdx.utils.Constants.TILE_SIZE;
 
 /**
  * Cannonball entity and the methods to get it flying.
@@ -19,8 +16,6 @@ import static com.mygdx.utils.Constants.TILE_SIZE;
 public class CannonBall extends Entity implements CollisionCallBack {
     private static float speed;
     private boolean toggleLife;
-    private static final int MAX_AGE = 5;
-    // private float age = 0;
     private Ship shooter;
 
     public CannonBall() {
@@ -60,13 +55,6 @@ public class CannonBall extends Entity implements CollisionCallBack {
             rb.setVelocity(0, 0);
             toggleLife = false;
         }
-        /*else{
-            age += EntityManager.getDeltaTime();
-        }
-        if(age > MAX_AGE) {
-            age = 0;
-            kill();
-        }*/
     }
 
     /**

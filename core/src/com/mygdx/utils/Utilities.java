@@ -9,7 +9,7 @@ import java.util.Random;
 import static com.mygdx.utils.Constants.TILE_SIZE;
 
 /**
- * Helper functions
+ * Helper functions.
  */
 public final class Utilities {
     public static float vectorToAngle(Vector2 v) {
