@@ -2,6 +2,7 @@ package com.mygdx.game.Components;
 
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.JsonValue;
+import com.mygdx.game.Entitys.Player;
 import com.mygdx.game.Entitys.Ship;
 import com.mygdx.game.Faction;
 import com.mygdx.game.Managers.GameManager;
@@ -14,7 +15,7 @@ import com.mygdx.utils.QueueFIFO;
  */
 public class Pirate extends Component {
     private int factionId;
-    private int plunder;
+    public static int plunder;
     protected boolean isAlive;
     private int health;
     private int ammo;
@@ -45,9 +46,9 @@ public class Pirate extends Component {
         multiShoot = false;
     }
 
-    //manage power ups:
-
     /**
+     * Powerups below added for assessment 2.
+     *
      * Applies a powerup to increase the player's health by 20
      */
     public void healthUpgrade() {
@@ -125,9 +126,6 @@ public class Pirate extends Component {
         plunder += money;
     }
 
-
-
-
     public Faction getFaction() {
         return GameManager.getFaction(factionId);
     }
@@ -183,8 +181,8 @@ public class Pirate extends Component {
     public void setHealth(int newHealth) { health = newHealth;}
 
     /**
-     * if dst to target is less than attack range
-     * target will be null if not in agro range
+     * If distance to target is less than attack range,
+     * target will be null if not in agro range.
      */
     public boolean canAttack() {
         if (targets.peek() != null) {
@@ -223,10 +221,6 @@ public class Pirate extends Component {
         return targets.peek();
     }
 
-    public void removeTarget() {
-        targets.pop();
-    }
-
     public boolean isAlive() {
         return isAlive;
     }
@@ -241,10 +235,14 @@ public class Pirate extends Component {
     }
 
     /**
-     * Called when/if the pirate dies.
+     * Called when an enemy pirate dies.
+     *
+     * Added for assessment 2:
+     * Gain points and plunder.
      */
     protected void onDeath() {
         PointsManager.change(POINTS_VALUE);
+        GameManager.getPlayer().addPlunder(10);
     }
 
     public void setAmmo(int ammo) {
@@ -253,10 +251,6 @@ public class Pirate extends Component {
 
     public int getAmmo() {
         return ammo;
-    }
-
-    public int targetCount() {
-        return targets.size();
     }
 
     public QueueFIFO<Ship> getTargets() {
