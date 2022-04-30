@@ -22,6 +22,7 @@ public class Pirate extends Component {
     private int attackDmg;
     private boolean damageReduce;
     private boolean speedIncrease;
+    private boolean multiShoot;
 
     private static final int POINTS_VALUE = 10;
 
@@ -42,44 +43,58 @@ public class Pirate extends Component {
         attackDmg = starting.getInt("damage");
         ammo = starting.getInt("ammo");
         damageReduce = false;
+        multiShoot = false;
     }
 
     /**
-     * Powerups added for assessment 2
+     * Powerups below added for assessment 2.
      *
+     * Applies a powerup to increase the player's health by 20
      */
     public void healthUpgrade() {
-        if (plunder >= 10) {
-            plunder -= 10;
+        if (plunder >= 50) {
+            plunder -= 50;
             health += 20;
         }
     }
 
+    /**
+     * Applies a powerup to increase the player's ammo by 5
+     */
     public void ammoUpgrade() {
-        if (plunder >= 20) {
-            plunder -= 20;
+        if (plunder >= 50) {
+            plunder -= 50;
             ammo += 5;
         }
     }
 
-    public void damageUpgrade() {
-        if (plunder >= 15) {
-            plunder -= 15;
-            attackDmg += 10;
+    /**
+     * Applies a powerup to shoot three cannonballs at once
+     */
+    public void multiShootUpgrade() {
+        if (plunder >= 100) {
+            plunder -= 100;
+            multiShoot = true;
         }
     }
 
+    /**
+     * Applies a powerup to increase the player ship's speed
+     */
     public void speedUpgrade() {
-        if (plunder >= 25) {
-            plunder -= 25;
+        if (plunder >= 200) {
+            plunder -= 200;
             GameManager.getPlayer().setSpeed(50000.0F);
             speedIncrease = true;
         }
     }
 
+    /**
+     * Applies a powerup to reduce the damage taken by the player when fired at by enemy ships
+     */
     public void reduceDamage() {
-        if (plunder >= 30) {
-            plunder -= 30;
+        if (plunder >= 200) {
+            plunder -= 200;
             damageReduce = true;
         }
     }
@@ -141,6 +156,13 @@ public class Pirate extends Component {
         }
         ammo--;
         GameManager.shoot((Ship) parent, dir);
+
+        if (multiShoot == true) {
+            Vector2 vec = new Vector2(1, 0);
+            Vector2 vec2 = new Vector2(0, 1);
+            GameManager.shoot((Ship) parent, (dir.add(vec)));
+            GameManager.shoot((Ship) parent, (dir.add(vec2)));
+        }
     }
 
     /**
