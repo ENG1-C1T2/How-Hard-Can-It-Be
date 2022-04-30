@@ -42,11 +42,6 @@ public final class RenderingManager {
         return camera;
     }
 
-
-    public static void setCamera(OrthographicCamera cam) {
-        camera = cam;
-    }
-
     /**
      * adds item to the list of renderable and adds to the correct layer
      *

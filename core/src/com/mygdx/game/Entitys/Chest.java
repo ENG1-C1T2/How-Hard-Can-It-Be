@@ -7,7 +7,7 @@ import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
 
 /**
- * Simple entity shown on locate quests origin
+ * Simple entity shown on locate quests origin.
  */
 public class Chest extends Entity {
     public Chest() {

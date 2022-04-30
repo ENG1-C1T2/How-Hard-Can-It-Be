@@ -24,7 +24,7 @@ public class QueueFIFO<T> implements Queue<T> {
         data = new ArrayList<>();
     }
 
-    //Implemented to allow testing
+    //Needed for testing
     public void set(ArrayList<T> set) {
         data = set;
         topIndex = size() -1;
@@ -37,7 +37,6 @@ public class QueueFIFO<T> implements Queue<T> {
     public int getIndex() {
         return topIndex;
     }
-    //End
 
     @Override
     public int size() {
