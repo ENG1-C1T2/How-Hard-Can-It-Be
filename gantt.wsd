@@ -1,34 +1,60 @@
 @startuml Oasis
 
-title Oasis Gantt Chart
+title Oasis Assessment 2 Gantt Chart
 
-Project starts the 18th of november 2021
-[Team Introduction] lasts 7 days and is colored in LightBlue
+Project starts the 4th of february 2022
 
-[Website Setup] starts 2021-11-25 and lasts 7 days and is colored in LightBlue
+[Roles 1] lasts 1 days
+[All - Requirements Gathering] starts at [Roles 1]'s end and lasts 1 day and is colored in DarkRed
 
-[Customer Requirements Meeting] starts 2021-11-26 and is colored in DarkRed
-[Customer Requirements Meeting] lasts 1 day
+[Documentation] starts at [Roles 1]'s end
+[Camran - Change Report 1] starts at [Documentation]'s end and lasts 6 days and is colored in LightBlue
 
-[Role Elicitation] starts 2021-11-25 
-[Cam: Website, Gannt Chart, Requirements (a)] starts at [Role Elicitation]'s end and lasts 7 days and is colored in LightBlue
-[Kieron: Requirements (b)] starts at [Role Elicitation]'s end and lasts 7 days and is colored in LightBlue
-[Will, Tabitha, Adam: Class Diagrams v1] starts at [Role Elicitation]'s end and lasts 7 days and is colored in DarkRed
+[Implementation] starts at [Roles 1]'s end
+[Adam - Cannonball Bug Fix] starts at [Implementation]'s end and lasts 3 days and is colored in LightBlue
+[Kieron - CI Research] starts at [Implementation]'s end and lasts 6 days and is colored in DarkRed
+[Will - Fork Original Website] starts at [Implementation]'s end and lasts 6 days and is colored in DarkRed
 
-[Role Elicitation 2] starts at 2021-12-2
-[Documentation: Method Selection and Planning] starts at [Role Elicitation 2]'s end and lasts 7 days and is colored in LightBlue
-[Implementation: libGDX Installation and Setup] starts at [Role Elicitation 2]'s end and lasts 7 days and is colored in LightBlue
-[Documentation: Abstract Architecture] starts at [Documentation: Method Selection and Planning]'s end and lasts 7 days and is colored in DarkRed
+[Roles 2] starts at 2022-02-11
+[Documentation 2] starts at [Roles 2]'s end
+/'[Camran - Change Report 2] starts at [Documentation 2]'s end and lasts 7 days and is colored in LightBlue'/
+[Camran - CI Report a)] starts at [Documentation 2]'s end and lasts 7 days and is colored in LightBlue
 
-[Christmas Break] starts at 2021-12-10 and lasts 22 days and is colored in Green
+[Implementation 2] starts at [Roles 2]'s end
+[Kieron - Setting Up Testing Environment] starts at [Implementation 2]'s end and lasts 13 days and is colored in DarkRed
+[Will - Points System] starts at [Implementation 2]'s end and lasts 7 days and is colored in DarkRed
 
-[Role Elicitation 3] starts 2021-12-31
-[Implementation: Map and Camera] starts at [Role Elicitation 3]'s end and lasts 7 days and is colored in LightBlue
-[Implementation: Ship Movement, Cannons] starts at [Role Elicitation 3]'s end and lasts 7 days and is colored in DarkRed
-[Documentation: Risk Assessment and Mitigation] starts at [Role Elicitation 3]'s end and lasts 7 days and is colored in LightBlue
+[Roles 3] starts at 2022-02-25
+[Documentation 3] starts at [Roles 3]'s end
+[Kieron - CI Report b)] starts at [Documentation 3]'s end and lasts 7 days and is colored in LightBlue
 
-[Implementation: Colleges and Objectives] starts at 2022-1-8 and lasts 14 days and is colored in DarkRed
-[Documentation: Concrete Architecture     ] starts at 2022-1-13 and lasts 7 days and is colored in DarkRed
+[Implementation 3] starts at [Roles 3]'s end
+[Tabitha - Difficulties] starts at [Implementation 3]'s end and lasts 12 days and is colored in DarkRed
+[Camran - Obstacles] starts at [Implementation 3]'s end and lasts 12 days and is colored in DarkRed
 
-[Finalisation] starts at 2022-1-20 and lasts 14 days
+[Continuous Integration Testing - Tests are being made as requirements are implemented] starts at 2022-02-25 and ends 2022-04-27 and is colored in PaleVioletRed
+
+[Roles 4] starts at 2022-03-11
+[Documentation 4] starts at [Roles 4]'s end
+[Kieron - Software Testing Report a)] starts at [Documentation 4]'s end and lasts 5 days and is colored in LightBlue
+
+[Implementation 4] starts at [Roles 4]'s end
+[Adam - Save State] starts at [Implementation 4]'s end and lasts 7 days and is colored in DarkRed
+[Will - Automatically Deploy Testing Report To Website] starts at [Implementation 4]'s end and lasts 5 days and is colored in PaleVioletRed
+
+[Easter Break] starts 2022-03-18 and ends 2022-04-19 and is colored in SeaGreen
+
+[Roles 5] starts at 2022-04-08
+[Documentation 5] starts at [Roles 5]'s end
+[Camran - Change Report 2] starts at [Documentation 5]'s end and lasts 18 days and is colored in LightBlue
+[Kieron - Software Testing Report b) and c)] starts at [Documentation 5]'s end and lasts 18 days and is colored in LightBlue
+[Camran - Implementation b)] starts at [Documentation 5]'s end and lasts 18 days and is colored in LightBlue
+
+[Implementation 5] starts at [Roles 5]'s end
+[Tabitha - Powerups and Shop System] starts at [Implementation 5]'s end and lasts 17 days and is colored in DarkRed
+[Tabitha - Ship Combat] starts at [Implementation 5]'s end and lasts 17 days and is colored in DarkRed
+
+[Finalisation] starts at 2022-04-27 and lasts 7 days
+
+[Submission] starts 2022-05-04
 @enduml
