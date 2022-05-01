@@ -8,10 +8,12 @@ import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @RunWith(GdxTestRunner.class)
+
 public class QueueFIFOTests {
 
     @Test
@@ -39,12 +41,16 @@ public class QueueFIFOTests {
     @Test
     public void contains() {
         QueueFIFO<Object> queue = new QueueFIFO<>();
-        queue.set(new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5)));
+        queue.set(new ArrayList<>(Arrays.asList(1, 2, 3)));
 
-        assertAll(
-                () -> assertTrue(queue.contains(3)),
-                () -> assertTrue(queue.contains(5)),
-                () -> assertFalse(queue.contains(6))
+        boolean testExpected = queue.contains(2);
+        boolean shouldFail = queue.contains(0);
+
+        assertAll("An error has occurred with the contains method",
+                () -> assertTrue(testExpected),
+                () -> assertFalse(shouldFail)
+     
+
         );
     }
 
