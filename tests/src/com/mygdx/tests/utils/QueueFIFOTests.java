@@ -24,8 +24,9 @@ public class QueueFIFOTests {
         QueueFIFO<Object> emptyQueue = new QueueFIFO<>();
         emptyQueue.set(new ArrayList<>());
 
-        assertAll(() -> assertEquals(queue.size(), 5, "Fail: Size of Queue Is Wrong"),
-                () -> assertEquals(emptyQueue.size(), 0, "Fail: Size of Empty Queue Is Wrong"));
+        assertAll(
+                () -> assertEquals(queue.size(), 5),
+                () -> assertEquals(emptyQueue.size(), 0));
     }
 
     @Test
@@ -33,7 +34,8 @@ public class QueueFIFOTests {
         QueueFIFO<Object> emptyQueue = new QueueFIFO<>();
         emptyQueue.set(new ArrayList<>());
 
-        assertAll(() -> assertTrue(emptyQueue.isEmpty()));
+        assertAll(
+                () -> assertTrue(emptyQueue.isEmpty()));
     }
 
     @Test
@@ -47,6 +49,8 @@ public class QueueFIFOTests {
         assertAll("An error has occurred with the contains method",
                 () -> assertTrue(testExpected),
                 () -> assertFalse(shouldFail)
+     
+
         );
     }
 
@@ -71,7 +75,7 @@ public class QueueFIFOTests {
     }
 
     @Test
-    public void containtsAll() {
+    public void containsAll() {
 
     }
 

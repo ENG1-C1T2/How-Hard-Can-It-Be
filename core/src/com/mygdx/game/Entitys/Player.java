@@ -38,6 +38,10 @@ public class Player extends Ship {
         getComponent(PlayerController.class).setSpeed(newSpeed);
     }
 
+    public void addPlunder(int money) {
+        Pirate.plunder += money;
+    }
+
     @Override
     public void cleanUp() {
         super.cleanUp();

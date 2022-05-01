@@ -10,10 +10,7 @@ import com.mygdx.game.Components.Pirate;
 import com.mygdx.game.Components.Transform;
 import com.mygdx.game.Entitys.*;
 import com.mygdx.game.Faction;
-import com.mygdx.game.Quests.Quest;
-import com.mygdx.utils.QueueFIFO;
 import com.mygdx.utils.Utilities;
-import com.mygdx.game.Components.Pirate;
 
 import java.util.ArrayList;
 
@@ -186,14 +183,13 @@ public final class GameManager {
     }
 
     /**
-     * Utilises the cached cannonballs to fire one
+     * Utilises the cached cannonballs to fire one.
      *
      * @param p   parent
      * @param dir shoot direction
      */
     public static void shoot(Ship p, Vector2 dir) {
         Vector2 pos = p.getComponent(Transform.class).getPosition().cpy();
-        //pos.add(dir.x * TILE_SIZE * 0.5f, dir.y * TILE_SIZE * 0.5f);
         ballCache.get(currentElement++).fire(pos, dir, p);
         currentElement %= cacheSize;
     }
@@ -255,14 +251,4 @@ public final class GameManager {
         prefs.flush();
     }
 
-    /**
-     * Uses a* not sure if it works, but I think it does.
-     * Assessment 1 commenter
-     * @param loc src
-     * @param dst dst
-     * @return queue of delta positions
-     */
-    public static QueueFIFO<Vector2> getPath(Vector2 loc, Vector2 dst) {
-        return mapGraph.findOptimisedPath(loc, dst);
-    }
 }

@@ -8,7 +8,6 @@ public enum ComponentType {
     Renderable,
     TileMap,
     Transform,
-    Text,
     RigidBody,
     AINavigation,
     Pirate,

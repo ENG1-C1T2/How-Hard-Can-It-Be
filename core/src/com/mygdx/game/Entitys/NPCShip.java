@@ -192,6 +192,9 @@ public class NPCShip extends Ship implements CollisionCallBack {
     }
 
 
+    /***
+     * Provides functionality to remove a ship offscreen once it has been killed.
+     */
     private void removeOnDeath() {
             getComponent(Renderable.class).hide();
             Transform t = getComponent(Transform.class);

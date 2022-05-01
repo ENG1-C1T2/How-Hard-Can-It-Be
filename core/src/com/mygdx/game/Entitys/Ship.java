@@ -4,7 +4,6 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.mygdx.game.Components.*;
-import com.mygdx.game.Managers.CollisionManager;
 import com.mygdx.game.Managers.GameManager;
 import com.mygdx.game.Managers.RenderLayer;
 import com.mygdx.game.Managers.ResourceManager;
@@ -181,7 +180,7 @@ public class Ship extends Entity implements CollisionCallBack {
             if (((CannonBall) info.a).getShooter().getFaction() != getFaction()) {
                 ((CannonBall) info.a).kill();
                 int health = getComponent(Pirate.class).getHealth();
-                getComponent(Pirate.class).setHealth(health - 10);
+                getComponent(Pirate.class).takeDamage(10);
             }
         }
         /*

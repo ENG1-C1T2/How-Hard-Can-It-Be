@@ -23,10 +23,6 @@ public class GameScreen extends Page {
     private Label points;
     private final Label questDesc;
     private final Label questName;
-    /*private final Label questComplete;
-    private float showTimer = 0;
-    // in seconds
-    private static final float showDuration = 1;*/
 
     /**
      * Boots up the actual game: starts PhysicsManager, GameManager, EntityManager,
@@ -40,16 +36,7 @@ public class GameScreen extends Page {
         INIT_CONSTANTS();
         PhysicsManager.Initialize(false);
 
-        /*int id_ship = ResourceManager.addTexture("ship.png");
-        int id_map = ResourceManager.addTileMap("Map.tmx");
-        int atlas_id = ResourceManager.addTextureAtlas("Boats.txt");
-        int extras_id = ResourceManager.addTextureAtlas("UISkin/skin.atlas");
-        int buildings_id = ResourceManager.addTextureAtlas("Buildings.txt");
-        ResourceManager.loadAssets();*/
-
-
         GameManager.SpawnGame(id_map);
-        //QuestManager.addQuest(new KillQuest(c));
 
         EntityManager.raiseEvents(ComponentEvent.Awake, ComponentEvent.Start);
 
@@ -65,8 +52,6 @@ public class GameScreen extends Page {
             questName.setText(q.getName());
             questDesc.setText(q.getDescription());
         }
-        /*questComplete = new Label("", parent.skin);
-        actors.add(questComplete);*/
 
         t.add(questDesc).left();
         questWindow.add(t);
@@ -94,7 +79,7 @@ public class GameScreen extends Page {
         table.add(new Label("Shoot With Ship Direction:", parent.skin)).left();
         table.add(new Image(parent.skin, "space"));
         table.row();
-        table.add(new Label("Pause/Powerup Menu:", parent.skin)).left();
+        table.add(new Label("Pause/Powerup Menu (Z):", parent.skin)).left();
         table.add(new Image(parent.skin, "key-z"));
         table.row();
         table.add(new Label("Quit:", parent.skin)).left();
@@ -191,23 +176,9 @@ public class GameScreen extends Page {
 
         } else {
             Quest q = QuestManager.currentQuest();
-            /*if(Objects.equals(prevQuest, "")) {
-                prevQuest = q.getDescription();
-            }
-            if(!Objects.equals(prevQuest, q.getDescription())) {
-                questComplete.setText("Quest Competed");
-                prevQuest = "";
-            }*/
             questName.setText(q.getName());
             questDesc.setText(q.getDescription());
         }
-        /*if(!questComplete.getText().equals("")) {
-            showTimer += EntityManager.getDeltaTime();
-        }
-        if(showTimer >= showDuration) {
-            showTimer = 0;
-            questComplete.setText("");
-        }*/
     }
 
     /**

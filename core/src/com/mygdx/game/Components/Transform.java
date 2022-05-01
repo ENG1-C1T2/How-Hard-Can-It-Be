@@ -77,42 +77,12 @@ public class Transform extends Component implements Location<Vector2> {
         }
     }
 
-    public void setScale(Vector2 pos) {
-        scale.set(pos);
-    }
-
     public void setScale(float x, float y) {
         scale.set(x, y);
     }
 
-    /**
-     * @param rot in Radians
-     */
-    public void setRotation(float rot) {
-        rotation = rot;
-    }
-
     public Vector2 getPosition() {
         return position;
-    }
-
-    /**
-     * returns the box2d position of the parent or the transform pos if no rigidbody found
-     *
-     * @return the center of the Entity or bottom left
-     */
-    public Vector2 getCenter() {
-        RigidBody rb = parent.getComponent(RigidBody.class);
-        if (rb == null) {
-            return getPosition();
-        }
-        return rb.getBody().getWorldCenter();
-    }
-
-    // For Ai Navigation
-
-    public void getLocation() {
-
     }
 
     @Override
