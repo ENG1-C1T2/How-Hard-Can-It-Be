@@ -2,11 +2,12 @@
 gradle.properties
 
 # VSCode
-
 /.vscode/
 
-## Java
+# All build directories
+build/
 
+## Java
 *.class
 *.war
 *.ear
