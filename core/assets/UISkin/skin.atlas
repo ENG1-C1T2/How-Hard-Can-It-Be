@@ -242,7 +242,7 @@ key-w
   index: -1
 key-z
   rotate: false
-  xy: 60, -6
+  xy: 70, 79
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
