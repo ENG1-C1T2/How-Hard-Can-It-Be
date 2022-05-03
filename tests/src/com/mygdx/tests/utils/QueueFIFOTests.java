@@ -49,73 +49,8 @@ public class QueueFIFOTests {
         assertAll("An error has occurred with the contains method",
                 () -> assertTrue(testExpected),
                 () -> assertFalse(shouldFail)
-     
+
 
         );
-    }
-
-    @Test
-    public void iterator() {
-
-    }
-
-    @Test
-    public void toArray() {
-
-    }
-
-    @Test
-    public void add() {
-
-    }
-
-    @Test
-    public void remove() {
-
-    }
-
-    @Test
-    public void containsAll() {
-
-    }
-
-    @Test
-    public void addAll() {
-
-    }
-
-    @Test
-    public void removeAll() {
-
-    }
-
-    @Test
-    public void retainAll() {
-
-    }
-
-    @Test
-    public void clear() {
-    //Not implemented
-    }
-
-    @Test
-    public void offer() {
-
-    }
-
-    @Test
-    public void poll() {
-
-    }
-
-    @Test
-    public void element() {
-
-    }
-
-    @Test
-    public void peek() {
-
     }
 }
