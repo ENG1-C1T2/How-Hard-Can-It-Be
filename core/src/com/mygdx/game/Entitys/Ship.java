@@ -15,7 +15,7 @@ import com.mygdx.utils.Utilities;
 import java.util.Objects;
 
 /**
- * Base class for game ships, Player & NPC.
+ * Base class for game ships, Player and NPC.
  */
 public class Ship extends Entity implements CollisionCallBack {
     private static int shipCount = 0;
