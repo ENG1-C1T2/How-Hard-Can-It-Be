@@ -44,7 +44,7 @@ public final class Utilities {
      * @param a      first point
      * @param b      second point
      * @param radius min dist to be considered close
-     * @return |dist(a, b)| < radius
+     * @return true if |dist(a, b)| is less than radius
      */
     public static boolean checkProximity(Vector2 a, Vector2 b, float radius) {
         final float d2 = radius * radius;

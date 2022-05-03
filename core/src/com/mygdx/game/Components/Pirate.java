@@ -203,7 +203,7 @@ public class Pirate extends Component {
     }
 
     /**
-     * if dst to target is >= attack range
+     * if dst to target is greater than or equal to attack range
      * target will be null if not in agro range
      */
     public boolean isAgro() {
