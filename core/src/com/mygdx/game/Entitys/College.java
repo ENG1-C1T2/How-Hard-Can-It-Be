@@ -16,6 +16,7 @@ import java.util.ArrayList;
 public class College extends Entity {
     private static ArrayList<String> buildingNames;
     private final ArrayList<Building> buildings;
+    private boolean alive = true;
 
     public College() {
         super();
@@ -92,9 +93,11 @@ public class College extends Entity {
                 res = true;
             }
         }
-        if (!res) {
+        // If this is the first time we detect that this college is not alive.
+        if (alive && !res) {
             getComponent(Pirate.class).kill();
         }
+        alive = res;
     }
 
     @Override
