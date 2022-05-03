@@ -10,6 +10,7 @@ import com.mygdx.game.Components.Pirate;
 import com.mygdx.game.Components.Transform;
 import com.mygdx.game.Entitys.*;
 import com.mygdx.game.Faction;
+import com.mygdx.game.Managers.PointsManager;
 import com.mygdx.utils.Utilities;
 
 import java.util.ArrayList;
@@ -211,6 +212,8 @@ public final class GameManager {
         player.setHealth(prefs.getInteger("playerHealth"));
         player.addPlunder(prefs.getInteger("playerPlunder"));
 
+        PointsManager.set(prefs.getInteger("playerPoints"));
+
         Ship p = (Ship) player.getParent();
         p.setPosition(
                 prefs.getFloat("playerX"),
@@ -235,6 +238,8 @@ public final class GameManager {
         prefs.putInteger("playerPlunder",player.getPlunder());
         prefs.putFloat("playerX",player.getPosition().x);
         prefs.putFloat("playerY",player.getPosition().y);
+
+        prefs.putInteger("playerPoints",PointsManager.get());
 
         boolean[] upgrades = player.getComponent(Pirate.class).getActiveUpgrades();
         prefs.putBoolean("speedIncrease",upgrades[0]);
